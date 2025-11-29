@@ -27,6 +27,16 @@ Sistema de memória unificada para agente LLM multicanal com detecção de ataqu
 
 ---
 
+### November 2025
+
+#### [Vibe Printing 3D](/november-2025/vibe-printing-3d/)
+Gerador de modelos 3D imprimíveis a partir de descrições em linguagem natural. O sistema interpreta texto para identificar tipo de objeto, dimensões, estilo e atributos funcionais, gerando arquivos STL prontos para impressão.
+
+**Tecnologias:** Python, FastAPI, React, Vite, Tailwind CSS, React Three Fiber, OpenSCAD  
+**Autores:** Julyana de Prá, Erika Goés e Guilherme 
+
+---
+
 ## 🎯 Sobre o Buildathon
 
 O Buildathon é um evento recorrente focado em:
