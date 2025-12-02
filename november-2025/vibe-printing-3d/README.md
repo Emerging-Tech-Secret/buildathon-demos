@@ -14,9 +14,10 @@ O **Vibe Printing 3D** é um MVP que permite gerar arquivos STL para impressão 
 ## ✨ Funcionalidades
 
 - 🔤 **Interpretação de texto** - Extrai tipo, dimensões, estilo e atributos funcionais
-- � **Modelos paramétricos** - Caixa, suporte, cilindro, bandeja e gancho
+- 🧩 **Modelos paramétricos** - Caixa, suporte, cilindro, bandeja e gancho
 - 🎨 **Estilos** - Minimalista, robusto, futurista, orgânico
-- � **Atributos funcionais** - Tampa, divisórias, furos, ganchos
+- 🛠️ **Atributos funcionais** - Tampa, divisórias, furos, ganchos
+- 🤖 **Modo IA (opcional)** - Gera um plano CAD via LLM e converte em OpenSCAD/STL
 - 📦 **Exportação STL** - Arquivos prontos para impressão 3D
 - 👁️ **Visualização 3D** - Preview interativo com React Three Fiber
 
@@ -26,9 +27,12 @@ O **Vibe Printing 3D** é um MVP que permite gerar arquivos STL para impressão 
 vibe-printing-3d/
 ├── backend/
 │   ├── main.py              # API FastAPI
-│   ├── parser.py            # Parser de linguagem natural
-│   ├── generator.py         # Gerador OpenSCAD
-│   └── templates/           # Templates SCAD
+│   ├── parser.py            # Parser de linguagem natural (heurístico)
+│   ├── generator.py         # Gerador/compilador OpenSCAD → STL
+│   ├── cad_plan.py          # Schema Pydantic (plano CAD baseado em CSG)
+│   ├── scad_renderer.py     # Conversor Plano CAD → OpenSCAD
+│   ├── llm_planner.py       # Integra LLM para produzir o Plano CAD (OpenAI/Ollama)
+│   └── templates/           # Templates SCAD (opcional)
 ├── frontend/                # React + Vite
 │   ├── src/
 │   │   ├── App.jsx          # Componente principal
@@ -73,6 +77,31 @@ source venv/bin/activate  # Linux/macOS
 # Instale as dependências
 pip install -r requirements.txt
 ```
+
+### Configurando o LLM (opcional)
+
+Para habilitar a geração via IA (`/generate-llm`):
+
+- OpenAI (recomendado)
+  1. Crie um arquivo `.env` dentro de `backend/` com:
+     ```
+     OPENAI_API_KEY=coloque_sua_chave_aqui
+     OPENAI_MODEL=gpt-4o-mini
+     LLM_PROVIDER=openai
+     ```
+  2. Reinicie o backend para ler o `.env`.
+
+- Ollama (local)
+  1. Instale e rode o Ollama (http://localhost:11434) e obtenha um modelo (ex.: `ollama pull llama3.1`).
+  2. Crie `backend/.env` com:
+     ```
+     OLLAMA_HOST=http://localhost:11434
+     OLLAMA_MODEL=llama3.1
+     LLM_PROVIDER=ollama
+     ```
+  3. Reinicie o backend.
+
+Sem configurar LLM, você ainda pode usar `/generate` (parser heurístico) normalmente.
 
 ### Instalando dependências do Frontend
 
@@ -136,6 +165,35 @@ curl -X POST http://localhost:8000/generate \
 curl -X POST http://localhost:8000/parse \
   -H "Content-Type: application/json" \
   -d '{"description": "Um gancho robusto para mochila"}'
+```
+
+#### Geração via IA (LLM)
+
+```bash
+curl -X POST http://localhost:8000/generate-llm \
+  -H "Content-Type: application/json" \
+  -d '{"description": "Uma bandeja com três divisórias, vibe minimalista"}'
+```
+
+#### Geração a partir de Plano CAD (CSG)
+
+```bash
+curl -X POST http://localhost:8000/generate-plan \
+  -H "Content-Type: application/json" \
+  -d '{
+    "scene": {
+      "unit": "mm",
+      "model": {
+        "type": "difference",
+        "children": [
+          { "type": "cube", "width": 100, "depth": 50, "height": 30 },
+          { "type": "translate", "x": 1.5, "y": 1.5, "z": 1.5,
+            "child": { "type": "cube", "width": 97, "depth": 47, "height": 29 }
+          }
+        ]
+      }
+    }
+  }'
 ```
 
 ### Via Python
@@ -214,15 +272,25 @@ O código OpenSCAD ainda é retornado mesmo sem o STL. Você pode:
 1. Instalar o OpenSCAD
 2. Copiar o código SCAD e compilar manualmente
 
+### LLM não configurado
+
+Se o endpoint `/generate-llm` retornar `501` ou erro de provedor:
+1. Crie `backend/.env` com as variáveis do provedor (veja "Configurando o LLM")
+2. Reinicie o backend
+3. Teste novamente
+
 ## �️ Stack Tecnológica
 
 ### Backend
 - **FastAPI** - Framework web Python
 - **OpenSCAD** - Geração de modelos 3D paramétricos
 - **Uvicorn** - Servidor ASGI
+- **httpx** - Cliente HTTP para provedores LLM
+- **python-dotenv** - Carrega variáveis de ambiente de `.env`
+- **OpenAI/Ollama** - Planejador CAD via LLM (opcional)
 
 ### Frontend
-- **React 19** - Biblioteca UI
+- **React 18** - Biblioteca UI
 - **Vite** - Build tool
 - **Tailwind CSS** - Estilização
 - **React Three Fiber** - Visualização 3D

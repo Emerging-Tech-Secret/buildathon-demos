@@ -12,12 +12,20 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
+from uuid import uuid4
+from dotenv import load_dotenv
 
 # Add current directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent))
 
+# Load environment variables from .env if present
+load_dotenv()
+
 from parser import DescriptionParser
 from generator import OpenSCADGenerator
+from cad_plan import SceneSpec
+from scad_renderer import render_scene
+from llm_planner import plan_from_description, PlannerError
 
 
 # Pydantic models
@@ -50,6 +58,22 @@ class HealthResponse(BaseModel):
     status: str
     timestamp: str
     version: str
+
+
+class ParseResponse(BaseModel):
+    success: bool
+    message: str
+    object_spec: Optional[dict] = None
+    scad_code: Optional[str] = None
+
+
+class CADPlanRequest(BaseModel):
+    scene: dict = Field(..., description="SceneSpec JSON describing the CAD plan")
+
+
+class LLMGenerateRequest(BaseModel):
+    description: str = Field(..., min_length=3, max_length=800)
+    provider: Optional[str] = Field(default=None, description="LLM provider id, e.g., openai, ollama")
 
 
 # Initialize FastAPI app
@@ -116,6 +140,114 @@ async def get_examples():
     Get example descriptions that can be used with the /generate endpoint.
     """
     return {"examples": EXAMPLES}
+
+
+@app.post("/parse", response_model=ParseResponse, tags=["Parsing"])
+async def parse_description(request: GenerateRequest):
+    """
+    Parse a natural language description and return the inferred object spec
+    and the generated OpenSCAD code, without compiling to STL.
+    """
+    try:
+        spec = parser.parse(request.description)
+        scad_code = generator._generate_scad_code(spec)
+        return ParseResponse(
+            success=True,
+            message="Descrição parseada com sucesso.",
+            object_spec=spec.to_dict(),
+            scad_code=scad_code,
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/generate-plan", response_model=GenerateResponse, tags=["Generation"])
+async def generate_from_plan(request: CADPlanRequest):
+    """
+    Generate STL from a CAD plan (SceneSpec JSON) produced by a planner/LLM or client.
+    """
+    try:
+        scene = SceneSpec.model_validate(request.scene)
+        scad_code = render_scene(scene)
+
+        # Write SCAD file
+        file_id = str(uuid4())[:8]
+        scad_path = generator.output_dir / f"plan_{file_id}.scad"
+        stl_path = generator.output_dir / f"plan_{file_id}.stl"
+        with open(scad_path, "w", encoding="utf-8") as f:
+            f.write(scad_code)
+
+        # Try to compile to STL
+        try:
+            generator._compile_to_stl(scad_path, stl_path)
+            filename = stl_path.name
+            return GenerateResponse(
+                success=True,
+                message="Modelo gerado a partir do plano CAD.",
+                download_url=f"/download/{filename}",
+                filename=filename,
+                object_spec=None,
+                scad_code=scad_code,
+            )
+        except RuntimeError as e:
+            # Return SCAD code even if OpenSCAD is missing
+            error_msg = str(e)
+            if "OpenSCAD not found" in error_msg:
+                return GenerateResponse(
+                    success=False,
+                    message="OpenSCAD não instalado. Código SCAD gerado mas STL não compilado.",
+                    object_spec=None,
+                    scad_code=scad_code,
+                )
+            raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/generate-llm", response_model=GenerateResponse, tags=["Generation"])
+async def generate_with_llm(request: LLMGenerateRequest):
+    """
+    Stub endpoint for LLM-driven generation. It will parse the description via an external
+    LLM to a CAD plan (SceneSpec) and render to SCAD/STL. Currently returns 501 when the
+    provider is not configured. This keeps the API stable while allowing future integration.
+    """
+    try:
+        # Use LLM to produce a CAD plan (SceneSpec)
+        scene = plan_from_description(request.description, provider=request.provider)
+        scad_code = render_scene(scene)
+        
+        # Write SCAD and try to compile
+        file_id = str(uuid4())[:8]
+        scad_path = generator.output_dir / f"llm_{file_id}.scad"
+        stl_path = generator.output_dir / f"llm_{file_id}.stl"
+        with open(scad_path, "w", encoding="utf-8") as f:
+            f.write(scad_code)
+        
+        try:
+            generator._compile_to_stl(scad_path, stl_path)
+            filename = stl_path.name
+            return GenerateResponse(
+                success=True,
+                message="Modelo gerado via LLM.",
+                download_url=f"/download/{filename}",
+                filename=filename,
+                object_spec=None,
+                scad_code=scad_code,
+            )
+        except RuntimeError as e:
+            error_msg = str(e)
+            if "OpenSCAD not found" in error_msg:
+                return GenerateResponse(
+                    success=False,
+                    message="OpenSCAD não instalado. Código SCAD gerado mas STL não compilado.",
+                    object_spec=None,
+                    scad_code=scad_code,
+                )
+            raise
+    except PlannerError as e:
+        raise HTTPException(status_code=501, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/generate", response_model=GenerateResponse, tags=["Generation"])
