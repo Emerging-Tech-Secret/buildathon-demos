@@ -37,6 +37,25 @@ Gerador de modelos 3D imprimíveis a partir de descrições em linguagem natural
 
 ---
 
+### December 2025
+
+> **Tema: Diversidade & Acessibilidade para Neurodivergentes**
+
+#### [Assistente de Leitura](/december-2025/diversidade/assistente-leitura/)
+Assistente de navegação para leitura de artigos científicos, focado em usuários neurodivergentes (TEA e TDAH). O objetivo é reduzir carga cognitiva, preservar o texto original intacto e oferecer controle total ao usuário.
+
+**Tecnologias:** React 18, CSS puro  
+**Funcionalidades:** Mapa do artigo, leitura guiada, resumo em camadas, explicação de termos
+**Autores:** Anna Martha, Julyana de Prá e Paulo Sorrentino
+#### [Bank Experiments](/december-2025/diversidade/bank-experiments/)
+Experimentos de acessibilidade em interfaces bancárias para usuários neurodivergentes. Inclui versões acessíveis dos sites do Itaú, Caixa e um protótipo ET-Bank com design otimizado para TEA e TDAH.
+
+**Tecnologias:** HTML, CSS, JavaScript  
+**Bancos:** Itaú, Caixa, ET-Bank (protótipo)
+**Autores:** Anna Martha, Julyana de Prá e Paulo Sorrentino 
+
+---
+
 ## 🎯 Sobre o Buildathon
 
 O Buildathon é um evento recorrente focado em:
