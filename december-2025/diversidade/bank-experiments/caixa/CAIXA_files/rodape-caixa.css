@@ -1,0 +1,543 @@
+﻿body {
+    background-color: #F9FBFB;
+}
+
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+.link-footer {
+    background: #D0E0E340 0% 0% no-repeat padding-box !important;
+}
+
+    .link-footer ul li {
+        margin: 0 2%;
+        display: flex;
+    }
+
+.column-rodape .soft {
+    display: -webkit-box;
+}
+
+.column-rodape li a {
+    color: #3A4857 !important;
+    font-family: 'CAIXA Std Book';
+    font-weight: 500;
+    font-size: 20px !important;
+    text-decoration: none;
+}
+
+    .column-rodape li a:hover {
+        font-weight: bold;
+        text-decoration: underline !important;
+        border-bottom-color: transparent !important;
+    }
+
+.column-rodape ul li:first-child {
+    margin-top: 3%;
+}
+
+.column-rodape ul li {
+    margin-bottom: 2%;
+}
+
+.column-rodape:nth-child(2n+1) ul {
+    margin-left: 5%;
+}
+
+.column-rodape i.fa-1x {
+    font-size: 1.3em;
+}
+
+#rodape .column-rodape .telefone {
+    color: #005CA9;
+    font-family: 'CAIXA Std Bold';
+    font-weight: bold;
+    letter-spacing: 0;
+    margin: 0;
+}
+
+#rodape .content-rodape .icon {
+    color: #005CA9;
+}
+
+#rodape .redes-sociais a:hover > .icon {
+    color: #fff;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    padding: 3px;
+    background: #005CA9;
+    cursor: pointer;
+    font-size: 14px;
+    border: 2px solid #005CA9;
+}
+
+#rodape .link-footer ul.ainfo {
+    float: right;
+}
+/* Clearfix */
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+#rodape {
+    position: relative;
+    padding-top: 50px;
+}
+
+    #rodape a {
+        font-size: 1rem;
+        line-height: 2rem;
+        color: #616971;
+    }
+
+.content-rodape .column-rodape ul {
+    margin: 40px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.column-rodape, .column-rodape telefones{
+    list-style: none;
+}
+
+.column-rodape p {
+    line-height: 2.2rem;
+}
+
+    .column-rodape .telefone {
+        color: #666b6f;
+        font-size: 1.6rem;
+    }
+
+    .column-rodape .soft {
+        color: #3A4857;
+        font-family: 'CAIXA Std Book';
+        font-weight: 500;
+        margin-top: 5px;
+    }
+
+.content-rodape .icon {
+    background: no-repeat center center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 20px -5px 0;
+}
+
+
+#rodape > .link-footer > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+    #rodape > .link-footer > ul li a {
+        font-family: 'CAIXA Std Book';
+        font-weight: 500;
+        color: #80868c;
+        font-size: .9rem;
+    }
+
+
+/*--------------------------------------------
+    > 600px
+----------------------------------------------*/
+
+@media screen and (min-width: 37.5em) {
+
+    #rodape a {
+        font-size: .9rem;
+    }
+
+    .content-rodape > .column-rodape {
+        width: 19%;
+        float: left;
+        margin-left: 6%;
+    }
+
+    .content-rodape .column-rodape > ul {
+        margin: 0;
+    }
+
+    .column-rodape p {
+        line-height: 1.8rem;
+    }
+
+        .column-rodape .telefone {
+            font-size: 1.6rem;
+        }
+
+        .column-rodape .soft {
+            font-size: 16px;
+        }
+
+    #rodape .link-footer {
+        padding-bottom: 70px;
+        bottom: auto;
+        left: auto;
+    }
+
+
+        #rodape .link-footer ul.languages li {
+            display: block;
+            margin: 0 0 10px;
+        }
+
+            #rodape .link-footer ul.languages li a {
+                line-height: 2rem;
+            }
+}
+/*/mediaquery*/
+
+/*--------------------------------------------
+    > 1000px
+----------------------------------------------*/
+
+@media screen and (min-width: 62.5em) {
+
+    #rodape {
+        padding-top: 120px;
+    }
+
+        #rodape a {
+            font-size: 1rem;
+        }
+
+
+        #rodape > .link-footer > ul {
+            display: inline-block;
+            width: auto;
+            margin-left: 10px;
+        }
+
+            #rodape > .link-footer > ul > li {
+                display: inline-block;
+                margin: 0 10px;
+            }
+
+                #rodape > .link-footer > ul > li:last-child {
+                    margin-right: 0;
+                }
+
+        #rodape .link-footer ul {
+            width: 88%;
+            display: flex;
+            justify-content: center;
+            margin-top: 2%;
+            margin-left: 4%;
+        }
+
+    .link-footer {
+        padding: 0 !important;
+        height: 100px !important;
+    }
+}
+
+
+.rodape-azul {
+    background-color: #005CA9;
+    width: 100vw !important;
+    height: auto;
+    position: absolute;
+    left: 0px;
+    margin: 0 !important;
+    box-sizing: border-box;
+}
+
+    .rodape-azul p {
+        color: #fff;
+        text-align: center;
+        font-family: 'CAIXA Std Book';
+        font-weight: 500;
+        padding: 16px 0 12px;
+        font-size: 16px;
+        margin: 0
+    }
+
+#rodape > .link-footer > ul > li {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 0 20px 0;
+}
+
+#rodape > .link-footer > ul li a {
+    font-family: 'CAIXA Std Book';
+    font-weight: 500;
+    color: #3A4857;
+    font-size: 14px;
+}
+
+    #rodape > .link-footer > ul li a:hover {
+        border-bottom-color: #3A4857;
+        text-decoration: none !important;
+        font-weight: bold;
+    }
+
+.informacao-rodape {
+    display: flex;
+    justify-content: center;
+    margin: 2% 0;
+    width: 100%
+}
+
+    .informacao-rodape ul {
+        display: flex;
+    }
+
+        .informacao-rodape ul li {
+            display: block;
+            position: relative;
+        }
+
+            .informacao-rodape ul li:first-child {
+                left: -185px;
+            }
+
+            .informacao-rodape ul li:nth-child(3) {
+                left: 100px;
+            }
+
+    .informacao-rodape li:first-child img {
+        margin: 0 20% 0 102px;
+    }
+
+    .informacao-rodape li a {
+        font-size: 14px !important;
+        line-height: 20px !important;
+        display: inline-flex;
+        position: absolute;
+    }
+
+    .informacao-rodape a img {
+        max-height: 42px;
+        width: auto;
+        height: auto;
+        position: absolute;
+    }
+
+.divisor-rodape {
+    display: inline-block;
+    height: 3rem;
+    border-left: 1px solid #3A4857;
+    margin-bottom: -0.2em;
+}
+
+.informacao-rodape li:nth-child(3) img {
+    margin: auto;
+    left: -63px;
+}
+
+.informacao-rodape a, .link-footer a {
+    text-decoration: none;
+    font-family: 'CAIXA Std Book';
+    font-weight: 500;
+}
+
+    .informacao-rodape a:hover, .link-footer a:hover {
+        font-weight: bold;
+        text-decoration: underline !important;
+        color: #3A4857 !important;
+        border-bottom-color: transparent !important;
+    }
+
+.link-footer li a {
+    font-size: 18px !important;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+    .link-footer li a::after {
+        content: attr(data-text);
+        content: attr(data-text)/"";
+        height: 0;
+        visibility: hidden;
+        overflow: hidden;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        pointer-events: none;
+        font-weight: bold;
+    }
+
+@media screen and (max-width: 420px) {
+    .informacao-rodape li:first-child img {
+        margin: 5px 8% 0 -25px;
+    }
+
+    .informacao-rodape li:nth-child(3) img {
+        margin: 4px 7% 0 8%;
+    }
+
+    .divisor-rodape {
+        height: 2.5rem;
+    }
+
+    .informacao-rodape a img {
+        max-height: 30px;
+    }
+
+    .informacao-rodape {
+        margin-bottom: 10%;
+    }
+}
+
+@media only screen and (max-width: 1401px) {
+    #rodape .link-footer ul {
+        margin-top: 2%;
+    }
+}
+
+@media only screen and (min-width: 1160px) and (max-width: 1400px) {
+    #rodape .link-footer ul {
+        margin-top: 2.8%;
+    }
+}
+
+@media only screen and (min-width: 712px) and (max-width:62.5em) {
+    #rodape .link-footer ul {
+        width: 100%;
+        display: flex;
+        float: right;
+    }
+}
+
+@media only screen and (max-width: 712px) {
+    .link-footer ul li {
+        margin: 10px 2%;
+    }
+}
+
+.fa-youtube {
+    font-size: 13px !important;
+}
+
+.fa-instagram {
+    width: 12px;
+}
+
+.link-footer, .rodape-azul {
+    padding: 0px;
+}
+
+@media only screen and (min-width: 800px) {
+    .link-footer, .rodape-azul {
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 860px) and (max-width: 1000px) {
+
+    #rodape .link-footer {
+        padding-bottom: 30px !important;
+    }
+}
+
+@media only screen and (min-width: 460px) and (max-width: 860px) {
+    #rodape .link-footer {
+        padding-bottom: 18px;
+    }
+
+    .rodape-azul p {
+        margin: 0 4%;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+    #rodape .column-rodape li a {
+        font-size: 16px !important;
+    }
+
+    #rodape .link-footer li a {
+        font-size: 16px !important;
+    }
+
+}
+
+@media only screen and (min-width: 424px) and (max-width: 600px) {
+    .column-rodape {
+        margin-left: 9%;
+    }
+}
+
+@media only screen and (max-width: 423px) {
+
+    .informacao-rodape {
+        justify-content: flex-start !important;
+        margin: 0 !important;
+    }
+
+        .informacao-rodape ul {
+            display: block !important;
+            padding: 0;
+            margin-left: 18%;
+            margin-bottom: 10%;
+            margin-bottom: 10%;
+        }
+
+        .informacao-rodape li:first-child {
+            direction: rtl;
+            display: block;
+            left: 0 !important;
+        }
+
+        .informacao-rodape li:nth-child(2) {
+            display: none;
+        }
+
+        .informacao-rodape li:nth-child(3) {
+            margin-left: 8%;
+            margin-top: 25%;
+            left: 0 !important;
+        }
+
+        .informacao-rodape li a {
+            display: contents;
+        }
+
+    .link-footer ul {
+        padding: 0;
+        margin-left: 10%;
+    }
+
+    .rodape-azul p {
+        margin: 0 4%;
+    }
+
+    .column-rodape.noindex {
+        margin-left: 10%;
+    }
+}
+
+.rodape-azul {
+    width: 100% !important;
+    height: auto;
+    position: absolute;
+    left: 0px;
+    margin: 0 !important;
+    box-sizing: border-box;
+}
+
+.redes-sociais *, .redes-sociais *:before, .redes-sociais *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.oculto {
+    display: none;
+}

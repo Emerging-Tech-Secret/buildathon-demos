@@ -1,0 +1,1045 @@
+@font-face {
+    font-family: 'CAIXA Std Bold';
+    src: url('/Style%20Library/fonts/CAIXAStd-Bold.eot');
+    src: url('/Style%20Library/fonts/CAIXAStd-Bold.eot?#iefix') format('embedded-opentype'), url('/Style%20Library/fonts/CAIXAStd-Bold.woff') format('woff'), url('/Style%20Library/fonts/CAIXAStd-Bold.woff2') format('woff2');
+}
+
+
+@font-face {
+    font-family: 'CAIXA Std Bold Italic';
+    src: url('/Style%20Library/fonts/CAIXAStd-BoldItalic.eot');
+    src: url('/Style%20Library/fonts/CAIXAStd-BoldItalic.eot?#iefix') format('embedded-opentype'), url('/Style%20Library/fonts/CAIXAStd-BoldItalic.woff') format('woff'), url('/Style%20Library/fonts/CAIXAStd-BoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'CAIXA Std Book';
+    src: url('/Style%20Library/fonts/CAIXAStd-Book.eot');
+    src: url('/Style%20Library/fonts/CAIXAStd-Book.eot?#iefix') format('embedded-opentype'), url('/Style%20Library/fonts/CAIXAStd-Book.woff') format('woff'), url('/Style%20Library/fonts/CAIXAStd-Book.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'CAIXA Std Book Italic';
+    src: url('/Style%20Library/fonts/CAIXAStd-BookItalic.eot');
+    src: url('/Style%20Library/fonts/CAIXAStd-BookItalic.eot?#iefix') format('embedded-opentype'), url('/Style%20Library/fonts/CAIXAStd-BookItalic.woff') format('woff'), url('/Style%20Library/fonts/CAIXAStd-BookItalic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'CAIXA Std ExtraBold';
+    src: url('/Style%20Library/fonts/CAIXAStd-ExtraBold.eot');
+    src: url('/Style%20Library/fonts/CAIXAStd-ExtraBold.eot?#iefix') format('embedded-opentype'), url('/Style%20Library/fonts/CAIXAStd-ExtraBold.woff') format('woff'), url('/Style%20Library/fonts/CAIXAStd-ExtraBold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'CAIXA Std ExtraBold Italic';
+    src: url('/Style%20Library/fonts/CAIXAStd-ExtraBoldItalic.eot');
+    src: url('/Style%20Library/fonts/CAIXAStd-ExtraBoldItalic.eot?#iefix') format('embedded-opentype'), url('/Style%20Library/fonts/CAIXAStd-ExtraBoldItalic.woff') format('woff'), url('/Style%20Library/fonts/CAIXAStd-ExtraBoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'CAIXA Std Italic';
+    src: url('/Style%20Library/fonts/CAIXAStd-Italic.eot');
+    src: url('/Style%20Library/fonts/CAIXAStd-Italic.eot?#iefix') format('embedded-opentype'), url('/Style%20Library/fonts/CAIXAStd-Italic.woff') format('woff'), url('/Style%20Library/fonts/CAIXAStd-Italic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'CAIXA Std Light';
+    src: url('/Style%20Library/fonts/CAIXAStd-Light.eot');
+    src: url('/Style%20Library/fonts/CAIXAStd-Light.eot?#iefix') format('embedded-opentype'), url('/Style%20Library/fonts/CAIXAStd-Light.woff') format('woff'), url('/Style%20Library/fonts/CAIXAStd-Light.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'CAIXA Std Light Italic';
+    src: url('/Style%20Library/fonts/CAIXAStd-LightItalic.eot');
+    src: url('/Style%20Library/fonts/CAIXAStd-LightItalic.eot?#iefix') format('embedded-opentype'), url('/Style%20Library/fonts/CAIXAStd-LightItalic.woff') format('woff'), url('/Style%20Library/fonts/CAIXAStd-LightItalic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'CAIXA Std Regular';
+    src: url('/Style%20Library/fonts/CAIXAStd-Regular.eot');
+    src: url('/Style%20Library/fonts/CAIXAStd-Regular.eot?#iefix') format('embedded-opentype'), url('/Style%20Library/fonts/CAIXAStd-Regular.woff') format('woff'), url('/Style%20Library/fonts/CAIXAStd-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'CAIXA Std SemiBold';
+    src: url('/Style%20Library/fonts/CAIXAStd-SemiBold.eot');
+    src: url('/Style%20Library/fonts/CAIXAStd-SemiBold.eot?#iefix') format('embedded-opentype'), url('/Style%20Library/fonts/CAIXAStd-SemiBold.woff') format('woff'), url('/Style%20Library/fonts/CAIXAStd-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'CAIXA Std SemiBold Italic';
+    src: url('/Style%20Library/fonts/CAIXAStd-SemiBoldItalic.eot');
+    src: url('/Style%20Library/fonts/CAIXAStd-SemiBoldItalic.eot?#iefix') format('embedded-opentype'), url('/Style%20Library/fonts/CAIXAStd-SemiBoldItalic.woff') format('woff'), url('/Style%20Library/fonts/CAIXAStd-SemiBoldItalic.woff2') format('woff2');
+}
+
+
+.ms-rteFontFace-caixa-std-bold {
+    -ms-name: "CAIXA Std Bold";
+    font-family: "CAIXA Std Bold" !important;
+    -webkit-font-family: "CAIXA Std Bold" !important;
+    -moz-font-family: "CAIXA Std Bold" !important;
+    -o-font-family: "CAIXA Std Bold" !important;
+}
+
+.ms-rteFontFace-caixa-std-bold-italic {
+    -ms-name: "CAIXA Std Bold Italic";
+    font-family: "CAIXA Std Bold Italic" !important;
+    -webkit-font-family: "CAIXA Std Bold Italic" !important;
+    -moz-font-family: "CAIXA Std Bold Italic" !important;
+    -o-font-family: "CAIXA Std Bold Italic" !important;
+}
+
+.ms-rteFontFace-caixa-std-book {
+    -ms-name: "CAIXA Std Book";
+    font-family: "CAIXA Std Book" !important;
+    -webkit-font-family: "CAIXA Std Book" !important;
+    -moz-font-family: "CAIXA Std Book" !important;
+    -o-font-family: "CAIXA Std Book" !important;
+}
+
+.ms-rteFontFace-caixa-std-book-italic {
+    -ms-name: "CAIXA Std Book Italic";
+    font-family: "CAIXA Std Book Italic" !important;
+    -webkit-font-family: "CAIXA Std Book Italic" !important;
+    -moz-font-family: "CAIXA Std Book Italic" !important;
+    -o-font-family: "CAIXA Std Book Italic" !important;
+}
+
+.ms-rteFontFace-caixa-std-extrabold {
+    -ms-name: "CAIXA Std ExtraBold";
+    font-family: "CAIXA Std ExtraBold" !important;
+    -webkit-font-family: "CAIXA Std ExtraBold" !important;
+    -moz-font-family: "CAIXA Std ExtraBold" !important;
+    -o-font-family: "CAIXA Std ExtraBold" !important;
+}
+
+.ms-rteFontFace-caixa-std-extrabold-italic {
+    -ms-name: "CAIXA Std ExtraBold Italic";
+    font-family: "CAIXA Std ExtraBold Italic" !important;
+    -webkit-font-family: "CAIXA Std ExtraBold Italic" !important;
+    -moz-font-family: "CAIXA Std ExtraBold Italic" !important;
+    -o-font-family: "CAIXA Std ExtraBold Italic" !important;
+}
+
+.ms-rteFontFace-caixa-std-italic {
+    -ms-name: "CAIXA Std Italic";
+    font-family: "CAIXA Std Italic" !important;
+    -webkit-font-family: "CAIXA Std Italic" !important;
+    -moz-font-family: "CAIXA Std Italic" !important;
+    -o-font-family: "CAIXA Std Italic" !important;
+}
+
+.ms-rteFontFace-caixa-std-light {
+    -ms-name: "CAIXA Std Light";
+    font-family: "CAIXA Std Light" !important;
+    -webkit-font-family: "CAIXA Std Light" !important;
+    -moz-font-family: "CAIXA Std Light" !important;
+    -o-font-family: "CAIXA Std Light" !important;
+}
+
+.ms-rteFontFace-caixa-std-light-italic {
+    -ms-name: "CAIXA Std Light Italic";
+    font-family: "CAIXA Std Light Italic" !important;
+    -webkit-font-family: "CAIXA Std Light Italic" !important;
+    -moz-font-family: "CAIXA Std Light Italic" !important;
+    -o-font-family: "CAIXA Std Light Italic" !important;
+}
+
+.ms-rteFontFace-caixa-std-regular {
+    -ms-name: "CAIXA Std Regular";
+    font-family: "CAIXA Std Regular" !important;
+    -webkit-font-family: "CAIXA Std Regular" !important;
+    -moz-font-family: "CAIXA Std Regular" !important;
+    -o-font-family: "CAIXA Std Regular" !important;
+}
+
+.ms-rteFontFace-caixa-std-semibold {
+    -ms-name: "CAIXA Std SemiBold";
+    font-family: "CAIXA Std SemiBold" !important;
+    -webkit-font-family: "CAIXA Std SemiBold" !important;
+    -moz-font-family: "CAIXA Std SemiBold" !important;
+    -o-font-family: "CAIXA Std SemiBold" !important;
+}
+
+.ms-rteFontFace-caixa-std-semibold-italic {
+    -ms-name: "CAIXA Std SemiBold Italic";
+    font-family: "CAIXA Std SemiBold Italic" !important;
+    -webkit-font-family: "CAIXA Std SemiBold Italic" !important;
+    -moz-font-family: "CAIXA Std SemiBold Italic" !important;
+    -o-font-family: "CAIXA Std SemiBold Italic" !important;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.submenu-title {
+    font-family: 'CAIXA Std Book';
+    font-weight: 500;
+    color: #005CA9;
+}
+
+h2, h3 {
+    font-family: 'CAIXA Std Bold';
+    font-weight: bold;
+}
+
+body {
+    margin: 0;
+}
+
+.hide {
+    display: none;
+}
+
+#header-home .header-content {
+    padding-left: 0px;
+}
+
+#main-nav-novo, .popover-header {
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
+#main-nav-novo {
+    top: 0px;
+    height: 116px;
+    display: flex;
+    justify-content: space-between;
+    background: rgba(0, 92, 169, 0.9);
+    position: absolute;
+    z-index: 99999;
+    padding-top: 18px;
+}
+
+    #main-nav-novo button span, #main-nav-novo strong {
+        font-family: 'CAIXA Std SemiBold';
+        font-weight: bold;
+    }
+
+.edicao {
+    position: relative !important;
+}
+
+@media(max-width: 1159px) {
+    #main-nav-novo {
+        position: inherit;
+    }
+}
+
+#main-nav-novo a {
+    text-decoration: none;
+    font-family: 'CAIXA Std Book';
+}
+
+.header-lista {
+    display: flex;
+    height: 70px;
+    padding: 0px;
+    margin-top: 20px;
+}
+
+    .header-lista li {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 4px 4px 0px 4px;
+        --leftBeforePopover: 0px;
+    }
+
+.border-conteudo-lista {
+    border-left: 3px solid #F9B200;
+    padding-left: 7px;
+}
+
+.conteudo-header-lista {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px 10px 3px 10px;
+    cursor: pointer;
+}
+
+.header-logo-caixa a img {
+    width: 51%;
+    background-size: cover;
+}
+
+.header-menu-hamburguer .fa {
+    color: #FFFFFF;
+    font-size: 25px;
+}
+
+.header-lista li strong, .conteudo-header-lista span {
+    font-weight: 900;
+    font-size: 19px;
+    color: #FFFFFF;
+}
+
+.header-lista li .conteudo-header-lista {
+    padding: 1px 3px 1px 3px;
+}
+
+.header-lista li .conteudo-header-lista a {
+    padding: 1px 6px 2px 6px;
+}
+
+    .header-lista li .conteudo-header-lista > a {
+        margin-top: 2px;
+    }
+
+.conteudo-header-lista button, .conteudo-header-lista, .abrir-sidebar button {
+    border: none;
+    background: transparent;
+}
+
+#headerMenuHambuguerMobile .on-click-mobile button {
+    background: #FFFFFF 0% 0% no-repeat padding-box !important;
+}
+
+    .border-conteudo-lista div {
+        height: 31px;
+    }
+
+.header-lista li .fa-sort-down {
+    margin: 5px 1px 6px 10px;
+    font-size: 14px;
+    font-weight: 900;
+    color: #FFFFFF;
+    bottom: 3px;
+    position: relative;
+}
+
+.hover-popover .conteudo-header-lista, .header-hover:hover .conteudo-header-lista {
+    background: transparent linear-gradient(180deg, #FFFFFF 0%, #D0E0E3 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 4px;
+}
+
+    .hover-popover .conteudo-header-lista strong, .header-hover:hover .conteudo-header-lista strong, .hover-popover .conteudo-header-lista span, .header-hover:hover .conteudo-header-lista span {
+        color: #005CA9;
+    }
+
+    .hover-popover .conteudo-header-lista .fa, .header-hover:hover .conteudo-header-lista .fa {
+        color: #005CA9;
+    }
+
+.header-box {
+    display: flex;
+    margin-top: 12px;
+    height: 54px;
+    right: 5px;
+    position: relative
+}
+
+.conteudo-header-box {
+    display: flex;
+    align-items: center;
+}
+
+.header-box .search-box {
+    margin-top: 20px;
+    margin-right: 45px;
+    padding-bottom: 10px;
+}
+
+    .header-box .search-box .fa {
+        color: #FFFFFF;
+        font-size: 12px;
+        margin-top: 3px;
+        margin-right: 22px;
+    }
+
+    .header-box .search-box .search-input {
+        height: 14px !important;
+        background-color: transparent;
+        box-shadow: none !important;
+        border: none !important;
+        outline: none !important;
+        text-decoration: none !important;
+        padding: 0px !important;
+        width: 120px !important;
+        margin-bottom: 3px !important;
+        color: #FFFFFF !important;
+        font-family: 'CAIXA Std Book';
+        font-weight: 0.8rem;
+    }
+
+.header-box .search-input::-webkit-input-placeholder {
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+.search-box .caixa-busca {
+    border-bottom: 1px #FFFFFF solid;
+    width: 170px;
+    height: 20px;
+    display: flex;
+    padding-bottom: 5px;
+    padding-left: 4px;
+}
+
+.header-box .conta {
+    width: 245px;
+    height: 100%;
+}
+
+    .header-box .conta a {
+        padding: 0px !important;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, #FFFFFF, #D0E0E3);
+        box-shadow: 0px 3px 6px #0000029;
+        border-radius: 4px;
+        color: #005CA9;
+        font-size: 16px;
+        font-weight: 900;
+        border: #FFFFFF solid 1px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'CAIXA Std Book'
+    }
+
+        .header-box .conta a .fa {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .header-box .conta a:hover {
+            background: transparent;
+            border-radius: 4px;
+            color: #FFFFFF;
+            transition-duration: 0.3s;
+            transition-property: transform;
+        }
+
+.popover-header {
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s linear;
+    left: 0px;
+    top: 100px;
+    visibility: hidden;
+    position: absolute;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 5px 0 #f5f5f5;
+    width: 100%;
+    z-index: 99;
+    display: flex;
+}
+
+    .popover-header:before {
+        position: absolute;
+        content: "";
+        top: calc(0% - 20px);
+        left: var(--leftBeforePopover) !important;
+        border-style: solid;
+        border-width: 0 20px 20px 20px;
+        border-color: transparent transparent #f5f5f5 transparent;
+    }
+
+    .popover-header .submenu-column {
+        display: flex;
+        width: auto;
+        padding: 0px;
+        margin: 36px 54px 100px 0px;
+    }
+
+        .popover-header .submenu-column:not(:first-child) {
+            margin-left: 10px;
+        }
+
+    .popover-header ul {
+        display: flex;
+        flex-direction: column;
+        padding: 0px;
+    }
+
+    .popover-header .submenu-column ul li {
+        padding: 0px;
+        margin: 0px;
+        height: 43px;
+    }
+
+    .popover-header .submenu-column ul li {
+        justify-content: flex-start;
+        border: none;
+    }
+
+    .popover-header ul li a {
+        color: #3A4857;
+        font-size: 16px;
+        font-family: 'CAIXA Std Book';
+        font-weight: 500;
+        display: inline-flex;
+        flex-direction: column;
+    }
+
+.submenu-column a::after {
+    content: attr(data-text);
+    content: attr(data-text)/"";
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    font-weight: bold;
+}
+
+.popover-header ul .see-more {
+    align-items: center;
+}
+
+    .popover-header ul .see-more .fa {
+        color: #005CA9;
+        font-size: 20px;
+        margin-right: 10px;
+        margin-top: 5px;
+    }
+
+.popover-header ul li.see-more {
+    margin-top: 20px;
+}
+
+.popover-header ul .see-more a {
+    color: #005CA9;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+    .popover-header ul .see-more a:hover {
+        text-decoration: underline 2px !important;
+    }
+
+.popover-header ul li .submenu-title {
+    font-size: 20px;
+    color: #005CA9;
+    font-weight: 500;
+    margin: 0px;
+}
+
+.hover-popover > .popover-header, .header-hover:hover > .popover-header {
+    visibility: visible;
+    opacity: 1;
+}
+
+.autocomplete-header {
+    display: block;
+    transition: visibility 0s, opacity 0.3s linear;
+    top: 80px;
+    position: absolute;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 5px 0 #f5f5f5;
+    z-index: 99;
+    padding-left: revert;
+}
+
+    .autocomplete-header li {
+        display: flex;
+        flex-direction: column;
+        color: #a5aab5;
+        font-size: 16px;
+        font-weight: 400;
+        word-break: normal;
+        height: auto;
+        padding: 12px 5px;
+        /* overflow-y: hidden;
+        overflow-x: scroll;*/
+        position: relative;
+        right: 20px;
+    }
+
+        .autocomplete-header li strong {
+            color: #006bae;
+            font-size: 20.7px;
+            font-weight: normal;
+            padding-right: 10px;
+            overflow-wrap: break-word;
+        }
+
+        .autocomplete-header li:hover {
+            background: #006bae;
+            color: #FFFFFF;
+        }
+
+            .autocomplete-header li:hover strong {
+                color: #FFFFFF;
+                cursor: pointer;
+            }
+
+.autocomplete-header {
+    z-index: 99999;
+}
+
+
+#autocompleteHeader * {
+    font-family: sans-serif !important;
+}
+
+#autocompleteHeader li {
+    margin-bottom: 0.5em;
+}
+
+@media(min-width: 1400px) {
+    .autocomplete-header {
+        width: 525px;
+        right: 3.35%;
+    }
+}
+
+@media(min-width: 1550px) {
+    .autocomplete-header {
+        right: 4%;
+    }
+}
+
+@media(min-width: 1650px) {
+    .autocomplete-header {
+        right: 4.5%;
+    }
+}
+
+@media(min-width: 1800px) {
+    .autocomplete-header {
+        right: 5.5%;
+    }
+}
+
+@media(min-width: 2200px) {
+    .autocomplete-header {
+        right: 6%;
+    }
+}
+
+@media(max-width: 1399px) {
+    .autocomplete-header {
+        width: 390px;
+        right: 3.15%;
+    }
+}
+
+.header-lista-mobile, .header-box-mobile, .conta-mobile {
+    display: none;
+}
+
+/*  /mobile */
+@media(max-width: 1159px) {
+    .autocomplete-header {
+        width: 100%;
+        right: 0px;
+        top: 125px;
+    }
+
+    .header-lista, .header-box {
+        display: none !important;
+    }
+
+    .header-content, .header-content nav, .main-header {
+        background: transparent !important;
+        border: none !important;
+        opacity: 1 !important;
+        height: 86px !important;
+    }
+
+    #main-nav-novo {
+        background: #005CA9 0% 0% no-repeat padding-box !important;
+        overflow: auto;
+        opacity: 1 !important;
+        padding: 16px 36px 16px 36px;
+        height: 86px;
+    }
+
+
+    .conta-mobile {
+        display: block;
+    }
+
+    .header-lista-mobile, .header-box-mobile {
+        display: block;
+        display: flex;
+        width: 135px;
+        height: 54px;
+        padding: 0px;
+        margin: 0px;
+    }
+
+        .header-lista-mobile li, .header-box-mobile div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .header-lista-mobile .header-logo-caixa {
+            display: flex;
+            padding: 0px;
+            margin: 0px;
+            width: 38px;
+            height: 27px;
+        }
+
+            .header-lista-mobile .header-logo-caixa img {
+                width: 38px;
+                height: 26px;
+            }
+
+    .header-menu-hamburguer-mobile .border-conteudo-lista {
+        display: flex;
+        height: 27px;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .header-menu-hamburguer-mobile .fa {
+        color: #FFFFFF;
+        font-size: 20px;
+    }
+
+    .header-menu-hamburguer-mobile .conteudo-header-lista {
+        padding: 0px;
+        margin: 0px;
+        margin-left: 7px;
+        width: 34px;
+        height: 26px;
+    }
+
+    .header-menu-hamburguer-mobile .on-click-mobile .conteudo-header-lista {
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border-radius: 4px;
+        opacity: 1;
+    }
+
+    .header-menu-hamburguer-mobile .on-click-mobile .fa {
+        color: #005CA9;
+    }
+
+    .conta {
+        display: block;
+    }
+
+    .header-box-mobile .conteudo-header-box {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+        .header-box-mobile .conteudo-header-box .conta {
+            min-width: 122px;
+            min-height: 54px;
+            max-width: 135px;
+            max-height: 54px;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .header-box-mobile .conteudo-header-box .conta a .fa {
+                margin-right: 15px;
+            }
+
+            .header-box-mobile .conteudo-header-box .conta a {
+                min-width: 122px;
+                min-height: 54px;
+                max-width: 135px;
+                max-height: 54px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                background: transparent linear-gradient(180deg, #FFFFFF 0%, #D0E0E3 100%) 0% 0% no-repeat padding-box;
+                box-shadow: 0px 3px 6px #00000029;
+                border-radius: 4px;
+                opacity: 1;
+                font-size: 18px;
+                font-weight: 900;
+                color: #005CA9;
+                font-family: 'CAIXA Std Book';
+            }
+
+                .header-box-mobile .conteudo-header-box .conta a span {
+                    margin-right: 10px;
+                }
+
+    #autocompleteHeader .ver-todos {
+        margin-bottom: 15px;
+    }
+
+    .autocomplete-header li strong {
+        margin-bottom: -10px;
+    }
+
+    .autocomplete-header li {
+        padding: 20px 24px;
+        right: 0;
+    }
+
+    .see-more a, .see-more i {
+        font-size: 1rem !important;
+        font-weight: normal;
+    }
+}
+
+.sidebar-mobile {
+    opacity: 1;
+    transition: visibility 0s, opacity 0.3s linear;
+    left: 0px;
+    top: 86px;
+    position: absolute;
+    background-color: #f5f5f5;
+    display: flex;
+    width: 100%;
+    z-index: 99;
+    flex-direction: column;
+}
+
+.conteudo-link-sidebar {
+    display: none;
+    padding-bottom: 20px;
+}
+
+.sidebar-mobile .busca-mobile {
+    width: 100%;
+    height: 54px;
+    background: rgba(208, 224, 227, 0.25);
+    box-shadow: inset 0px 3px 6px #00000029;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 0px 0px 0px;
+}
+
+    .sidebar-mobile .busca-mobile .fa-search {
+        margin-right: 37px;
+    }
+
+.search-input::-webkit-input-placeholder {
+    color: #005CA9;
+    font-size: 15px;
+}
+
+.busca-mobile .search-input {
+    margin: 0px;
+    padding: 0px !important;
+    border: none !important;
+    box-shadow: none;
+    background: transparent;
+    width: 80%;
+    height: 19px !important;
+    margin-left: 37px;
+    outline: none;
+    color: #005CA9;
+}
+
+.busca-mobile .fa {
+    color: #005CA9;
+    font-size: 14px;
+}
+
+.lista-sidebar-mobile ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+    .lista-sidebar-mobile ul li {
+        height: 54px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0px;
+    }
+
+        .lista-sidebar-mobile ul li:nth-child(even) {
+            background: rgba(0, 92, 169, 0.1);
+            opacity: 1;
+            border: none;
+        }
+
+        .lista-sidebar-mobile ul li:nth-child(odd) {
+            background: #F9FBFB 0% 0% no-repeat padding-box;
+            opacity: 1;
+            border: none;
+        }
+
+        .lista-sidebar-mobile ul li span, .lista-sidebar-mobile ul li i{
+            font-size: 16px;
+            color: #005CA9;
+        }
+
+        .lista-sidebar-mobile ul li a {
+            color: #005CA9;
+        }
+
+        .lista-sidebar-mobile ul li .fa {
+            font-size: 19px;
+        }
+
+.footer-sidebar-mobile {
+    display: flex;
+    heigth: 243px;
+    flex-direction: column;
+    background: rgba(208, 224, 227, 0.25);
+}
+
+.logos-footer-sidebar-mobile ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 0px;
+}
+
+    .logos-footer-sidebar-mobile ul li {
+        width: 29px;
+        height: 29px;
+        border-radius: 50%;
+        background: #005CA9 0% 0% no-repeat padding-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+        .logos-footer-sidebar-mobile ul li:not(:first-child) {
+            margin-left: 14.5%;
+        }
+
+.logos-footer-sidebar-mobile i {
+    color: #FFFFFF !important;
+    font-size: 15px;
+}
+
+.logos-footer-sidebar-mobile .fa-facebook {
+    margin-top: 6.5px;
+    font-size: 23px;
+}
+
+.links-footer-sidebar-mobile ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    padding-left: 0px;
+}
+
+    .links-footer-sidebar-mobile ul li a {
+        color: #3A4857;
+        font-size: 16px;
+    }
+
+.links-footer-sidebar-mobile a {
+    color: #3A4857;
+}
+
+.links-footer-sidebar-mobile li {
+    margin-top: 10px;
+}
+
+.conteudo-link-sidebar ul, .conteudo-link-sidebar li {
+    margin: 0px;
+    padding: 0px;
+}
+
+.conteudo-link-sidebar li {
+    height: 54px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+    .conteudo-link-sidebar li:not(:first-child, :last-child) {
+        justify-content: space-between;
+    }
+
+    .conteudo-link-sidebar li a {
+        color: #3A4857;
+    }
+
+    .conteudo-link-sidebar li p, .conteudo-link-sidebar li span {
+        color: #005CA9;
+        margin: 0px;
+        font-size: 16px !important;
+        font-weight: 500;
+        display: inline;
+    }
+
+.conteudo-link-sidebar ul li:first-child, .conteudo-link-sidebar ul li:first-child button, .conteudo-link-sidebar ul li:first-child button span {
+    background: #005CA9 0% 0% no-repeat padding-box;
+    color: #F9FBFB;
+    font-weight: 900;
+    border: none;
+}
+
+    .conteudo-link-sidebar ul li:first-child .fa {
+        font-size: 22px;
+        margin-top: -5px;
+        margin-right: 15px;
+    }
+
+.conteudo-link-sidebar ul .see-more a, .conteudo-link-sidebar ul .see-more .fa {
+    color: #005CA9;
+}
+
+.conteudo-link-sidebar ul .see-more .fa {
+    font-size: 22px;
+    margin-top: 5px;
+}
+
+.conteudo-link-sidebar ul .see-more a {
+    text-decoration: underline 2px !important;
+    margin-left: 15px;
+    font-size: 19px;
+}
+
+.sidebar-mobile {
+    display: none;
+}
+
+.ui-autocomplete {
+    display: none !important;
+}
+
+@media(min-width: 1160px) {
+    .logo {
+        padding-top: 2px;
+        margin-right: -31px;
+    }
+}
+
+@media(max-width: 1159px) {
+    .logo {
+        padding-top: 29px;
+        align-self: center;
+    }
+
+    .header-menu-hamburguer-mobile {
+        margin-left: 7px !important;
+    }
+
+        .header-menu-hamburguer-mobile .border-conteudo-lista .conteudo-header-lista {
+            padding-top: 2px;
+        }
+
+    .conteudo-sidebar .see-more {
+        justify-content: flex-start !important;
+        padding-left: 37px;
+        padding-right: 37px;
+    }
+
+    .submenu-title {
+        font-size: 16px !important;
+    }
+}
+
+.submenu-column a:hover {
+    font-weight: bold;
+    text-decoration: underline !important;
+}
+
+.ms-cui-menu, .contextMenuPopup, .ms-core-menu-box, .ms-dlgContent {
+    z-index: 9999999 !important;
+}

@@ -1,0 +1,480 @@
+﻿.solucoes-conglomerado {
+    width: 100%;
+    padding: 20px 0 30px 0;
+    height: auto;
+    background: #005CA9;
+    margin-top: 2%;
+}
+
+    .solucoes-conglomerado .solucoes-conglomerado-titulo {
+        font-family: 'CAIXA Std Bold';
+        font-weight: bold;
+        font-style: normal;
+        font-size: 42px;
+        color: #fff;
+        margin-left: 9%;
+        margin-bottom: 4%;
+    }
+
+    .solucoes-conglomerado
+    .carrossel-conglomerado {
+        width: 80% !important;
+        margin: 0px auto;
+        margin-left: 8%;
+    }
+
+    .solucoes-conglomerado .imagem-solucao {
+        height: auto;
+        margin-bottom: -6px;
+    }
+
+    .solucoes-conglomerado .titulo-solucao, .solucoes-conglomerado .link-titulo-solucao {
+        text-align: left;
+        font-family: 'CAIXA Std Bold';
+        font-weight: bold;
+        font-size: 18px;
+        color: #4C556C;
+        padding: 15px 0;
+        text-decoration: none !important;
+    }
+
+        .solucoes-conglomerado .link-titulo-solucao:hover {
+            text-decoration: underline !important;
+        }
+
+    .solucoes-conglomerado .slick-slide {
+        margin: 15px 10px 15px 10px;
+    }
+
+        .solucoes-conglomerado .slick-slide img {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+
+    /*  .solucoes-conglomerado .item-solucao:hover img {
+        -moz-transition: scale(1.1);
+        -webkit-transition: scale(1.1);
+        transform: scale(1.1);
+        mix-blend-mode: overlay;
+    }*/
+
+  /*  .solucoes-conglomerado .item-solucao:hover {
+        contain: layout;
+        border-radius: 10px 10px 0 0;
+    }*/
+
+    .solucoes-conglomerado .slick-prev {
+        right: 101%;
+        left: auto;
+        text-align: right;
+        padding: 16px;
+    }
+
+    .solucoes-conglomerado .slick-next {
+        left: 100%;
+        right: auto;
+        text-align: left;
+        padding: 16px;
+    }
+
+    .solucoes-conglomerado .slick-prev, .solucoes-conglomerado .slick-next {
+        top: 36.3% !important;
+        height: 860px;
+        width: 100px;
+        cursor: pointer;
+    }
+
+        .solucoes-conglomerado .slick-next:hover {
+            background: transparent;
+            color: #005CA9;
+            top: 36.3% !important;
+            height: 860px;
+            width: 155px;
+            mix-blend-mode: normal;
+            cursor: pointer;
+            text-align: left;
+            padding: 16px;
+        }
+
+        .solucoes-conglomerado .slick-prev:hover {
+            background: transparent;
+            color: #005CA9;
+            top: 36.3% !important;
+            height: 860px;
+            width: 169px;
+            mix-blend-mode: normal;
+            cursor: pointer;
+            text-align: right;
+            padding: 16px;
+        }
+
+            .solucoes-conglomerado .slick-next:hover:before, .solucoes-conglomerado .slick-prev:hover:before {
+                color: #fff;
+                font-family: "Font Awesome 6 free";
+                font-weight: 900;
+            }
+
+        .solucoes-conglomerado .slick-next:before {
+            font-size: 42px;
+            line-height: 1;
+            opacity: 1;
+            color: #fff;
+            background: #005CA9;
+            border-radius: 20px;
+            border: 2px solid #005CA9;
+            font-family: 'FontAwesome';
+            content: "\f152";
+        }
+
+        .solucoes-conglomerado .slick-prev:before {
+            font-size: 42px;
+            line-height: 1;
+            opacity: 1;
+            color: #fff;
+            background: #005CA9;
+            border-radius: 20px;
+            border: 2px solid #005CA9;
+            font-family: 'FontAwesome';
+            content: "\f191";
+        }
+
+    .solucoes-conglomerado .slick-center .item-solucao {
+        transform: scale(1.08);
+    }
+
+    .solucoes-conglomerado .item-solucao {
+        width: 96%;
+    }
+
+    .solucoes-conglomerado .card-body {
+        background: #fff;
+        width: 100%;
+        vertical-align: top;
+        border-radius: 0 0 10px 10px;
+        overflow: hidden;
+        padding-bottom: 10px;
+        margin-bottom: 6px;
+    }
+
+    .solucoes-conglomerado .card-content {
+        text-align: left;
+        color: #333;
+        padding: 15px;
+    }
+
+    .solucoes-conglomerado .texto-informativo-solucao p {
+        text-align: left;
+        font-family: 'CAIXA Std Book';
+        font-weight: 500;
+        font-size: 16px;
+        color: #4C556C;
+        width: 90%;
+    }
+
+    .solucoes-conglomerado .saiba-mais-solucao {
+        position: absolute;
+        bottom: 32px;
+        color: #005CA9;
+        text-decoration: underline;
+        cursor: pointer;
+        width: 6%;
+    }
+
+        .solucoes-conglomerado .saiba-mais-solucao:hover {
+            font-weight: bold;
+            width: 6%;
+        }
+
+    .solucoes-conglomerado .item-solucao:hover .saiba-mais-solucao {
+        width: 90%;
+    }
+
+    .solucoes-conglomerado .slick-dots li button::before {
+        border: 3px solid #fff;
+    }
+
+    .solucoes-conglomerado .slick-dots li.slick-active button:before {
+        color: #fff !important;
+        border: 3px solid #fff;
+        background: #fff;
+    }
+
+    .solucoes-conglomerado .slick-dots li button {
+        font-size: 0;
+        line-height: 0;
+        display: block;
+        width: 20px;
+        height: 20px;
+        padding: 5px;
+        cursor: pointer;
+        color: transparent;
+        border: 0;
+        outline: none;
+        background: transparent;
+    }
+
+    .solucoes-conglomerado .slick-dots li.slick-active button::before {
+        opacity: 1.5;
+        border-radius: 50%;
+        width: 14px;
+        height: 14px;
+        position: absolute;
+        top: 2px;
+    }
+
+    .solucoes-conglomerado .slick-dots li button:hover, .slick-dots li button:focus {
+        outline: none;
+    }
+
+    .solucoes-conglomerado .slick-dots li button::before {
+        font-family: 'slick';
+        font-size: 6px;
+        line-height: 20px;
+        text-align: center;
+        background: transparent;
+        border-radius: 50%;
+        width: 14px;
+        height: 14px;
+        position: absolute;
+        top: 2px;
+        opacity: 1.5;
+        color: transparent;
+    }
+
+    .solucoes-conglomerado .slick-dots li.slick-active button::before {
+        opacity: 1.5;
+        border-radius: 50%;
+        width: 14px;
+        height: 14px;
+        position: absolute;
+        top: 2px;
+    }
+
+/* Responsivo */
+@media only screen and (min-width: 1301px) {
+    .solucoes-conglomerado .carrossel-conglomerado {
+        margin-left: 10%;
+    }
+
+    .solucoes-conglomerado .solucoes-conglomerado-titulo {
+        margin-left: 11%;
+    }
+
+    .solucoes-conglomerado .saiba-mais-solucao {
+        width: 16vw;
+    }
+
+    .card-body:hover .saiba-mais-solucao {
+        width: 6%;
+    }
+}
+
+@media only screen and (min-width: 1161px) and (max-width: 1300px) {
+    .solucoes-conglomerado .slick-next:hover {
+        width: 116px;
+    }
+
+    .solucoes-conglomerado .carrossel-conglomerado {
+        margin-left: 10%;
+    }
+
+    .solucoes-conglomerado .solucoes-conglomerado-titulo {
+        margin-left: 11%;
+    }
+
+    .solucoes-conglomerado .slick-prev:hover, .solucoes-conglomerado .slick-next:hover {
+        height: 700px;
+    }
+
+    .card-body:hover .saiba-mais-solucao {
+        width: 6% !important;
+    }
+}
+
+@media only screen and (max-width: 1160px) {
+    .solucoes-conglomerado .solucoes-conglomerado-titulo {
+        font-size: 5.5vw;       
+    }
+
+    .solucoes-conglomerado .slick-dots li button::before, .solucoes-conglomerado .slick-dots li.slick-active button::before {
+        width: 10px;
+        height: 10px;
+    }
+
+    .solucoes-conglomerado .item-solucao {
+        width: 96%;
+    }
+
+    .solucoes-conglomerado .carrossel-conglomerado {
+        width: 100% !important;
+        margin: 0px auto;
+        margin-left: 0;
+    }
+
+    .solucoes-conglomerado {
+        margin-top: 10%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .solucoes-conglomerado .item-solucao {
+        display: inline-block;
+    }
+
+    .solucoes-conglomerado .item-solucao {
+        width: 100%;
+    }
+
+    .solucoes-conglomerado .carrossel-conglomerado {
+        width: 100% !important;
+        margin: 0px auto;
+        margin-left: 0;
+    }
+
+    .solucoes-conglomerado .slick-dots {
+        padding: 10px 0;
+    }
+
+    .solucoes-conglomerado .saiba-mais-solucao, .solucoes-conglomerado .saiba-mais-solucao:hover, .card-body:hover .saiba-mais-solucao {
+        width: 6%;
+    }
+
+    .solucoes-conglomerado .slick-active .saiba-mais-solucao, .solucoes-conglomerado .slick-active .saiba-mais-solucao:hover {
+        width: 92%;
+        margin-left: -6px;
+    }
+}
+
+@media only screen and (min-width:600px) and (max-width:1160px) {
+    .solucoes-conglomerado .slick-center .item-solucao {
+        transform: scale(1.08);
+    }
+}
+
+
+@media only screen and (min-width: 420px) and (max-width: 599px) {
+    .solucoes-conglomerado .item-solucao {
+        width: 96%;
+    }
+
+    /*.solucoes-conglomerado .card-body {
+        height: 212px;
+    }*/
+
+    .solucoes-conglomerado .slick-slide img {
+        height: 180px;
+        object-fit: cover;
+    }
+
+    .solucoes-conglomerado .titulo-solucao {
+        padding: 9px 0;
+    }
+
+    .solucoes-conglomerado .texto-informativo-solucao p {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width:600px) and (max-width:1160px) {
+
+    .solucoes-conglomerado .slick-center .item-solucao {
+        transform: none;
+    }
+}
+
+@media only screen and (min-width: 521px) and (max-width: 599px) {
+/*
+    .solucoes-conglomerado .card-body {
+        height: 190px;
+    }*/
+
+    .solucoes-conglomerado .slick-slide img {
+        height: 130px;
+        object-fit: cover;
+    }
+
+    .solucoes-conglomerado .slick-center .saiba-mais-solucao {
+        bottom: 13px;
+    }
+}
+
+@media only screen and (min-width: 439px) and (max-width: 520px) {
+/*
+    .solucoes-conglomerado .card-body {
+        height: 212px;
+    }*/
+
+    .solucoes-conglomerado .slick-slide img {
+        height: 130px;
+        object-fit: cover;
+    }
+
+    /*.solucoes-conglomerado .saiba-mais-solucao {
+        bottom: 28px;
+    }*/
+
+    .solucoes-conglomerado .slick-center .saiba-mais-solucao {
+        bottom: 13px;
+    }
+
+    .solucoes-conglomerado .item-solucao {
+        width: 94%;
+    }
+
+    .solucoes-conglomerado .titulo-solucao {
+        padding: 4px 0;
+    }
+
+    .solucoes-conglomerado .texto-informativo-solucao p, .solucoes-conglomerado .saiba-mais-solucao {
+        font-size: 16px;
+    }
+
+    .solucoes-conglomerado .slick-slide img {
+        height: 145px;
+        object-fit: cover;
+    }
+}
+
+@media only screen and (min-width: 421px) and (max-width: 440px) {
+    .solucoes-conglomerado .slick-active .saiba-mais-solucao {
+        bottom: 13px;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .solucoes-conglomerado .texto-informativo-solucao p {
+        width: 100%;
+    }
+
+    .solucoes-conglomerado .carrossel-conglomerado {
+        width: 100% !important;
+        margin: 0px auto;
+        margin-left: 0;
+    }
+
+    .solucoes-conglomerado .titulo-solucao {
+        padding: 2px 0;
+    }
+
+    .solucoes-conglomerado .slick-center .saiba-mais-solucao {
+        bottom: 13px;
+    }
+
+    .solucoes-conglomerado .texto-informativo-solucao p, .solucoes-conglomerado .saiba-mais-solucao {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 389px) and (max-width: 420px) {
+    .solucoes-conglomerado .slick-slide img {
+        height: 130px;
+        object-fit: cover;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+
+    .solucoes-conglomerado .slick-center .saiba-mais-solucao {
+        bottom: 13px;
+    }
+}

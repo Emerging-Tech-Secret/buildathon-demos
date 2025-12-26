@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ET Bank - Banco Digital Acessível para Todos">
+    <meta name="theme-color" content="#6366f1">
+    <title>ET Bank - Banco Digital Acessível</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* =====================================================
+           ET BANK - DESIGN SYSTEM PARA NEURODIVERGENTES
+           Padrão ouro de acessibilidade para TEA e TDAH
+        ===================================================== */
+
+        /* =====================================================
+           VARIÁVEIS CSS - Sistema de Design
+        ===================================================== */
+        :root {
+            /* Paleta de cores calmas e consistentes */
+            --cor-primaria: #6366f1;
+            --cor-primaria-hover: #4f46e5;
+            --cor-primaria-light: #e0e7ff;
+            --cor-secundaria: #10b981;
+            --cor-secundaria-light: #d1fae5;
+            --cor-destaque: #f59e0b;
+            --cor-destaque-light: #fef3c7;
+            
+            /* Cores neutras */
+            --cor-texto: #1f2937;
+            --cor-texto-secundario: #6b7280;
+            --cor-fundo: #ffffff;
+            --cor-fundo-alt: #f9fafb;
+            --cor-fundo-card: #ffffff;
+            --cor-borda: #e5e7eb;
+            --cor-borda-foco: #6366f1;
+            
+            /* Feedback */
+            --cor-sucesso: #10b981;
+            --cor-erro: #ef4444;
+            --cor-alerta: #f59e0b;
+            --cor-info: #3b82f6;
+            
+            /* Foco visual - MUITO IMPORTANTE para acessibilidade */
+            --cor-foco: #fbbf24;
+            --sombra-foco: 0 0 0 4px rgba(251, 191, 36, 0.5);
+            
+            /* Tipografia */
+            --fonte-familia: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --fonte-tamanho-base: 18px;
+            --fonte-tamanho-pequeno: 16px;
+            --fonte-tamanho-grande: 22px;
+            --fonte-tamanho-titulo: 32px;
+            --fonte-tamanho-subtitulo: 24px;
+            --linha-altura: 1.7;
+            --letra-espacamento: 0.01em;
+            
+            /* Espaçamentos consistentes */
+            --espaco-xs: 8px;
+            --espaco-sm: 16px;
+            --espaco-md: 24px;
+            --espaco-lg: 40px;
+            --espaco-xl: 64px;
+            
+            /* Bordas e sombras suaves */
+            --borda-raio: 12px;
+            --borda-raio-grande: 20px;
+            --sombra-suave: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --sombra-media: 0 4px 16px rgba(0, 0, 0, 0.08);
+            
+            /* Transições - DESABILITADAS por padrão para neurodivergentes */
+            --transicao: none;
+            --transicao-lenta: none;
+        }
+
+        /* Modo com transições suaves (opcional) */
+        .com-transicoes {
+            --transicao: 0.15s ease;
+            --transicao-lenta: 0.3s ease;
+        }
+
+        /* =====================================================
+           TEMAS DE CORES ALTERNATIVOS
+        ===================================================== */
+        
+        /* Tema Calmo (baixo estímulo) */
+        .tema-calmo {
+            --cor-primaria: #64748b;
+            --cor-primaria-hover: #475569;
+            --cor-primaria-light: #f1f5f9;
+            --cor-secundaria: #71717a;
+            --cor-texto: #374151;
+            --cor-fundo: #fafafa;
+            --cor-fundo-alt: #f4f4f5;
+        }
+
+        /* Tema Alto Contraste */
+        .tema-contraste {
+            --cor-primaria: #000000;
+            --cor-primaria-hover: #1f1f1f;
+            --cor-primaria-light: #e5e5e5;
+            --cor-texto: #000000;
+            --cor-texto-secundario: #333333;
+            --cor-fundo: #ffffff;
+            --cor-borda: #000000;
+            --cor-foco: #ffff00;
+        }
+
+        /* Tema Escuro */
+        .tema-escuro {
+            --cor-primaria: #818cf8;
+            --cor-primaria-hover: #a5b4fc;
+            --cor-primaria-light: #312e81;
+            --cor-secundaria: #34d399;
+            --cor-texto: #f3f4f6;
+            --cor-texto-secundario: #9ca3af;
+            --cor-fundo: #111827;
+            --cor-fundo-alt: #1f2937;
+            --cor-fundo-card: #1f2937;
+            --cor-borda: #374151;
+        }
+
+        /* Tema Sépia (reduz fadiga) */
+        .tema-sepia {
+            --cor-fundo: #faf6f1;
+            --cor-fundo-alt: #f5efe6;
+            --cor-fundo-card: #fdfbf7;
+            --cor-texto: #5c4b37;
+            --cor-texto-secundario: #7d6b57;
+        }
+
+        /* =====================================================
+           AJUSTES DE FONTE
+        ===================================================== */
+        .fonte-grande {
+            --fonte-tamanho-base: 20px;
+            --fonte-tamanho-pequeno: 18px;
+            --fonte-tamanho-grande: 26px;
+            --fonte-tamanho-titulo: 38px;
+        }
+
+        .fonte-muito-grande {
+            --fonte-tamanho-base: 24px;
+            --fonte-tamanho-pequeno: 20px;
+            --fonte-tamanho-grande: 30px;
+            --fonte-tamanho-titulo: 44px;
+        }
+
+        /* Espaçamento maior */
+        .espacamento-grande {
+            --espaco-sm: 24px;
+            --espaco-md: 36px;
+            --espaco-lg: 56px;
+            --linha-altura: 2;
+        }
+
+        /* =====================================================
+           RESET E BASE
+        ===================================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: var(--fonte-tamanho-base);
+            scroll-behavior: auto; /* Sem scroll suave - pode causar desorientação */
+        }
+
+        body {
+            font-family: var(--fonte-familia);
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: var(--linha-altura);
+            letter-spacing: var(--letra-espacamento);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* =====================================================
+           FOCO VISÍVEL - Essencial para navegação por teclado
+        ===================================================== */
+        *:focus {
+            outline: none;
+        }
+
+        *:focus-visible {
+            outline: 3px solid var(--cor-foco);
+            outline-offset: 3px;
+            box-shadow: var(--sombra-foco);
+        }
+
+        /* =====================================================
+           SKIP LINK
+        ===================================================== */
+        .skip-link {
+            position: fixed;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--cor-primaria);
+            color: white;
+            padding: var(--espaco-sm) var(--espaco-md);
+            border-radius: var(--borda-raio);
+            font-weight: 600;
+            text-decoration: none;
+            z-index: 10000;
+            transition: top 0.2s;
+        }
+
+        .skip-link:focus {
+            top: var(--espaco-sm);
+        }
+
+        /* =====================================================
+           BARRA DE ACESSIBILIDADE FIXA
+        ===================================================== */
+        .barra-acessibilidade {
+            background: var(--cor-fundo-alt);
+            border-bottom: 2px solid var(--cor-borda);
+            padding: var(--espaco-sm) var(--espaco-md);
+        }
+
+        .barra-acessibilidade-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--espaco-sm);
+        }
+
+        .barra-titulo {
+            display: flex;
+            align-items: center;
+            gap: var(--espaco-xs);
+            font-weight: 600;
+            color: var(--cor-primaria);
+            font-size: var(--fonte-tamanho-pequeno);
+        }
+
+        .controles-grupo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--espaco-xs);
+            align-items: center;
+        }
+
+        .controle-label {
+            font-size: 13px;
+            color: var(--cor-texto-secundario);
+            font-weight: 500;
+            margin-right: 4px;
+        }
+
+        .btn-controle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px 14px;
+            background: var(--cor-fundo-alt);
+            border: 2px solid var(--cor-borda);
+            border-radius: 8px;
+            color: var(--cor-texto);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transicao);
+            white-space: nowrap;
+        }
+
+        .btn-controle:hover {
+            border-color: var(--cor-primaria);
+            background: var(--cor-primaria-light);
+        }
+
+        .btn-controle.ativo {
+            background: var(--cor-primaria);
+            color: white;
+            border-color: var(--cor-primaria);
+        }
+
+        .btn-controle i {
+            font-size: 14px;
+        }
+
+        .separador {
+            width: 1px;
+            height: 24px;
+            background: var(--cor-borda);
+            margin: 0 var(--espaco-xs);
+        }
+
+        /* =====================================================
+           INDICADOR DE PROGRESSO (onde estou no site)
+        ===================================================== */
+        .indicador-progresso {
+            position: fixed;
+            top: var(--espaco-md);
+            left: var(--espaco-md);
+            background: var(--cor-fundo-card);
+            border: 2px solid var(--cor-borda);
+            border-radius: var(--borda-raio);
+            padding: var(--espaco-sm);
+            z-index: 100;
+            max-width: 200px;
+            box-shadow: var(--sombra-suave);
+        }
+
+        .indicador-titulo {
+            font-size: 12px;
+            color: var(--cor-texto-secundario);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--espaco-xs);
+        }
+
+        .indicador-atual {
+            font-weight: 600;
+            color: var(--cor-primaria);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .indicador-atual i {
+            font-size: 18px;
+        }
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+        .header {
+            background: var(--cor-fundo-card);
+            padding: var(--espaco-md) var(--espaco-lg);
+            border-bottom: 1px solid var(--cor-borda);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--espaco-md);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--espaco-sm);
+            text-decoration: none;
+            color: var(--cor-texto);
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--cor-primaria);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .logo-texto {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-nome {
+            font-size: var(--fonte-tamanho-grande);
+            font-weight: 700;
+            color: var(--cor-primaria);
+            line-height: 1.2;
+        }
+
+        .logo-tagline {
+            font-size: var(--fonte-tamanho-pequeno);
+            color: var(--cor-texto-secundario);
+        }
+
+        .header-acoes {
+            display: flex;
+            gap: var(--espaco-sm);
+        }
+
+        /* =====================================================
+           BOTÕES
+        ===================================================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--espaco-xs);
+            padding: var(--espaco-sm) var(--espaco-md);
+            border-radius: var(--borda-raio);
+            font-size: var(--fonte-tamanho-base);
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transicao);
+            min-height: 52px; /* Área de toque maior */
+        }
+
+        .btn-primario {
+            background: var(--cor-primaria);
+            color: white;
+            border-color: var(--cor-primaria);
+        }
+
+        .btn-primario:hover {
+            background: var(--cor-primaria-hover);
+            border-color: var(--cor-primaria-hover);
+        }
+
+        .btn-secundario {
+            background: transparent;
+            color: var(--cor-primaria);
+            border-color: var(--cor-primaria);
+        }
+
+        .btn-secundario:hover {
+            background: var(--cor-primaria-light);
+        }
+
+        .btn-grande {
+            padding: var(--espaco-md) var(--espaco-lg);
+            font-size: var(--fonte-tamanho-grande);
+            min-height: 64px;
+        }
+
+        /* =====================================================
+           NAVEGAÇÃO SIMPLIFICADA
+        ===================================================== */
+        .nav-principal {
+            background: var(--cor-fundo-alt);
+            padding: var(--espaco-md);
+            border-bottom: 1px solid var(--cor-borda);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-lista {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--espaco-sm);
+            list-style: none;
+            justify-content: center;
+        }
+
+        .nav-item {
+            flex: 1;
+            min-width: 150px;
+            max-width: 200px;
+        }
+
+        .nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--espaco-xs);
+            padding: var(--espaco-md);
+            background: var(--cor-fundo-card);
+            border: 2px solid var(--cor-borda);
+            border-radius: var(--borda-raio);
+            text-decoration: none;
+            color: var(--cor-texto);
+            text-align: center;
+            transition: var(--transicao);
+            min-height: 100px;
+        }
+
+        .nav-link:hover,
+        .nav-link:focus {
+            border-color: var(--cor-primaria);
+            background: var(--cor-primaria-light);
+        }
+
+        .nav-link.ativo {
+            border-color: var(--cor-primaria);
+            background: var(--cor-primaria);
+            color: white;
+        }
+
+        .nav-link i {
+            font-size: 28px;
+            color: var(--cor-primaria);
+        }
+
+        .nav-link.ativo i {
+            color: white;
+        }
+
+        .nav-link span {
+            font-weight: 600;
+            font-size: var(--fonte-tamanho-pequeno);
+        }
+
+        /* =====================================================
+           CONTEÚDO PRINCIPAL
+        ===================================================== */
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--espaco-lg);
+        }
+
+        /* =====================================================
+           SEÇÃO DE BOAS-VINDAS
+        ===================================================== */
+        .boas-vindas {
+            background: var(--cor-primaria-light);
+            border-radius: var(--borda-raio-grande);
+            padding: var(--espaco-xl);
+            margin-bottom: var(--espaco-lg);
+            text-align: center;
+            border: 2px solid var(--cor-borda);
+        }
+
+        .boas-vindas h1 {
+            font-size: var(--fonte-tamanho-titulo);
+            color: var(--cor-primaria);
+            margin-bottom: var(--espaco-sm);
+            font-weight: 700;
+        }
+
+        .boas-vindas p {
+            font-size: var(--fonte-tamanho-grande);
+            color: var(--cor-texto-secundario);
+            max-width: 600px;
+            margin: 0 auto var(--espaco-md);
+        }
+
+        .usuario-info {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--espaco-sm);
+            background: var(--cor-fundo-card);
+            padding: var(--espaco-sm) var(--espaco-md);
+            border-radius: var(--borda-raio);
+            border: 1px solid var(--cor-borda);
+        }
+
+        .usuario-avatar {
+            width: 48px;
+            height: 48px;
+            background: var(--cor-secundaria);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .usuario-dados {
+            text-align: left;
+        }
+
+        .usuario-nome {
+            font-weight: 600;
+            color: var(--cor-texto);
+        }
+
+        .usuario-conta {
+            font-size: var(--fonte-tamanho-pequeno);
+            color: var(--cor-texto-secundario);
+        }
+
+        /* =====================================================
+           CARDS DE SALDO - Informação clara e organizada
+        ===================================================== */
+        .saldo-section {
+            margin-bottom: var(--espaco-lg);
+        }
+
+        .secao-titulo {
+            display: flex;
+            align-items: center;
+            gap: var(--espaco-sm);
+            font-size: var(--fonte-tamanho-subtitulo);
+            color: var(--cor-texto);
+            margin-bottom: var(--espaco-md);
+            padding-bottom: var(--espaco-sm);
+            border-bottom: 3px solid var(--cor-primaria);
+        }
+
+        .secao-titulo i {
+            color: var(--cor-primaria);
+        }
+
+        .saldo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--espaco-md);
+        }
+
+        .saldo-card {
+            background: var(--cor-fundo-card);
+            border: 2px solid var(--cor-borda);
+            border-radius: var(--borda-raio-grande);
+            padding: var(--espaco-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .saldo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--cor-primaria);
+        }
+
+        .saldo-card.destaque::before {
+            background: var(--cor-primaria);
+        }
+
+        .saldo-tipo {
+            font-size: var(--fonte-tamanho-pequeno);
+            color: var(--cor-texto-secundario);
+            margin-bottom: var(--espaco-xs);
+            display: flex;
+            align-items: center;
+            gap: var(--espaco-xs);
+        }
+
+        .saldo-valor {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--cor-texto);
+            margin-bottom: var(--espaco-sm);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .saldo-toggle {
+            display: flex;
+            align-items: center;
+            gap: var(--espaco-xs);
+            font-size: 14px;
+            color: var(--cor-texto-secundario);
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: var(--espaco-xs);
+            border-radius: 6px;
+        }
+
+        .saldo-toggle:hover {
+            background: var(--cor-fundo-alt);
+        }
+
+        .saldo-acoes {
+            display: flex;
+            gap: var(--espaco-sm);
+            margin-top: var(--espaco-md);
+            padding-top: var(--espaco-md);
+            border-top: 1px solid var(--cor-borda);
+        }
+
+        .saldo-acoes .btn {
+            flex: 1;
+            font-size: var(--fonte-tamanho-pequeno);
+        }
+
+        /* =====================================================
+           AÇÕES RÁPIDAS - Grandes e claras
+        ===================================================== */
+        .acoes-rapidas {
+            margin-bottom: var(--espaco-lg);
+        }
+
+        .acoes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--espaco-md);
+        }
+
+        .acao-card {
+            background: var(--cor-fundo-card);
+            border: 2px solid var(--cor-borda);
+            border-radius: var(--borda-raio-grande);
+            padding: var(--espaco-lg);
+            text-decoration: none;
+            color: var(--cor-texto);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: var(--espaco-sm);
+            transition: var(--transicao);
+            min-height: 180px;
+        }
+
+        .acao-card:hover,
+        .acao-card:focus {
+            border-color: var(--cor-primaria);
+            box-shadow: var(--sombra-media);
+            transform: translateY(-2px);
+        }
+
+        .acao-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--cor-primaria-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .acao-icon i {
+            font-size: 32px;
+            color: var(--cor-primaria);
+        }
+
+        .acao-card h3 {
+            font-size: var(--fonte-tamanho-base);
+            font-weight: 600;
+        }
+
+        .acao-card p {
+            font-size: var(--fonte-tamanho-pequeno);
+            color: var(--cor-texto-secundario);
+        }
+
+        /* =====================================================
+           HISTÓRICO/EXTRATO - Lista clara
+        ===================================================== */
+        .historico {
+            margin-bottom: var(--espaco-lg);
+        }
+
+        .historico-lista {
+            background: var(--cor-fundo-card);
+            border: 2px solid var(--cor-borda);
+            border-radius: var(--borda-raio-grande);
+            overflow: hidden;
+        }
+
+        .historico-item {
+            display: flex;
+            align-items: center;
+            gap: var(--espaco-md);
+            padding: var(--espaco-md) var(--espaco-lg);
+            border-bottom: 1px solid var(--cor-borda);
+            transition: var(--transicao);
+        }
+
+        .historico-item:last-child {
+            border-bottom: none;
+        }
+
+        .historico-item:hover {
+            background: var(--cor-fundo-alt);
+        }
+
+        .historico-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .historico-icon.entrada {
+            background: var(--cor-secundaria-light);
+            color: var(--cor-secundaria);
+        }
+
+        .historico-icon.saida {
+            background: #fee2e2;
+            color: var(--cor-erro);
+        }
+
+        .historico-info {
+            flex: 1;
+        }
+
+        .historico-titulo {
+            font-weight: 600;
+            color: var(--cor-texto);
+            margin-bottom: 2px;
+        }
+
+        .historico-data {
+            font-size: var(--fonte-tamanho-pequeno);
+            color: var(--cor-texto-secundario);
+        }
+
+        .historico-valor {
+            font-weight: 700;
+            font-size: var(--fonte-tamanho-grande);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .historico-valor.positivo {
+            color: var(--cor-secundaria);
+        }
+
+        .historico-valor.negativo {
+            color: var(--cor-erro);
+        }
+
+        /* =====================================================
+           AJUDA CONTEXTUAL - Sempre visível
+        ===================================================== */
+        .ajuda-box {
+            background: var(--cor-destaque-light);
+            border: 2px solid var(--cor-destaque);
+            border-radius: var(--borda-raio);
+            padding: var(--espaco-md);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--espaco-sm);
+            margin-bottom: var(--espaco-lg);
+        }
+
+        .ajuda-box i {
+            color: var(--cor-destaque);
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .ajuda-box-content h4 {
+            color: var(--cor-texto);
+            margin-bottom: var(--espaco-xs);
+        }
+
+        .ajuda-box-content p {
+            color: var(--cor-texto-secundario);
+            font-size: var(--fonte-tamanho-pequeno);
+        }
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+        .footer {
+            background: var(--cor-fundo-alt);
+            border-top: 2px solid var(--cor-borda);
+            padding: var(--espaco-xl) var(--espaco-lg);
+            margin-top: var(--espaco-xl);
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--espaco-sm);
+            margin-bottom: var(--espaco-md);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--espaco-md);
+            margin-bottom: var(--espaco-md);
+        }
+
+        .footer-links a {
+            color: var(--cor-texto-secundario);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--cor-primaria);
+        }
+
+        .footer-contato {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--espaco-lg);
+            margin-bottom: var(--espaco-md);
+            padding: var(--espaco-md);
+            background: var(--cor-fundo-card);
+            border-radius: var(--borda-raio);
+        }
+
+        .footer-contato-item {
+            display: flex;
+            align-items: center;
+            gap: var(--espaco-xs);
+            color: var(--cor-texto);
+        }
+
+        .footer-contato-item i {
+            color: var(--cor-primaria);
+        }
+
+        .footer-copy {
+            color: var(--cor-texto-secundario);
+            font-size: var(--fonte-tamanho-pequeno);
+        }
+
+        .footer-acessibilidade {
+            margin-top: var(--espaco-md);
+            padding-top: var(--espaco-md);
+            border-top: 1px solid var(--cor-borda);
+        }
+
+        .footer-acessibilidade p {
+            font-size: var(--fonte-tamanho-pequeno);
+            color: var(--cor-texto-secundario);
+        }
+
+        .footer-acessibilidade strong {
+            color: var(--cor-primaria);
+        }
+
+        /* =====================================================
+           MODO FOCO - Remove distrações
+        ===================================================== */
+        .modo-foco .ajuda-box,
+        .modo-foco .footer-links,
+        .modo-foco .footer-contato,
+        .modo-foco .indicador-progresso {
+            display: none;
+        }
+
+        .modo-foco .nav-link:not(.ativo) {
+            opacity: 0.5;
+        }
+
+        /* =====================================================
+           GUIA VISUAL - Destaca elemento atual
+        ===================================================== */
+        .guia-visual *:focus {
+            position: relative;
+        }
+
+        .guia-visual *:focus::after {
+            content: '← Você está aqui';
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--cor-destaque);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            margin-left: 8px;
+            z-index: 1000;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+        @media (max-width: 768px) {
+            .barra-acessibilidade-inner {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .controles-grupo {
+                justify-content: center;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-acoes {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .nav-lista {
+                flex-direction: column;
+            }
+
+            .nav-item {
+                max-width: none;
+            }
+
+            .boas-vindas {
+                padding: var(--espaco-lg);
+            }
+
+            .indicador-progresso {
+                display: none;
+            }
+
+            .separador {
+                display: none;
+            }
+        }
+
+        /* =====================================================
+           PREFERÊNCIAS DO SISTEMA
+        ===================================================== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not(.tema-calmo):not(.tema-contraste):not(.tema-sepia) {
+                --cor-primaria: #818cf8;
+                --cor-texto: #f3f4f6;
+                --cor-texto-secundario: #9ca3af;
+                --cor-fundo: #111827;
+                --cor-fundo-alt: #1f2937;
+                --cor-fundo-card: #1f2937;
+                --cor-borda: #374151;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link -->
+    <a href="#conteudo-principal" class="skip-link">
+        Pular para o conteúdo principal
+    </a>
+
+    <!-- Barra de Acessibilidade -->
+    <header class="barra-acessibilidade" role="banner">
+        <div class="barra-acessibilidade-inner">
+            <div class="barra-titulo">
+                <i class="fa-solid fa-universal-access"></i>
+                <span>Personalize sua experiência</span>
+            </div>
+            
+            <div class="controles-grupo">
+                <span class="controle-label">Tema:</span>
+                <button class="btn-controle ativo" id="tema-padrao" title="Tema padrão">
+                    <i class="fa-solid fa-circle-half-stroke"></i> Padrão
+                </button>
+                <button class="btn-controle" id="tema-calmo" title="Cores mais suaves">
+                    <i class="fa-solid fa-spa"></i> Calmo
+                </button>
+                <button class="btn-controle" id="tema-contraste" title="Alto contraste">
+                    <i class="fa-solid fa-circle"></i> Contraste
+                </button>
+                <button class="btn-controle" id="tema-escuro" title="Modo escuro">
+                    <i class="fa-solid fa-moon"></i> Escuro
+                </button>
+
+                <div class="separador"></div>
+
+                <span class="controle-label">Fonte:</span>
+                <button class="btn-controle" id="fonte-normal" title="Tamanho normal">A</button>
+                <button class="btn-controle" id="fonte-grande" title="Fonte grande">A+</button>
+                <button class="btn-controle" id="fonte-muito-grande" title="Fonte muito grande">A++</button>
+
+                <div class="separador"></div>
+
+                <button class="btn-controle" id="btn-espacamento" title="Aumentar espaçamento">
+                    <i class="fa-solid fa-arrows-up-down"></i>
+                </button>
+                <button class="btn-controle" id="btn-transicoes" title="Ativar transições suaves">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </button>
+                <button class="btn-controle" id="btn-foco" title="Modo foco">
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+                <button class="btn-controle" id="btn-guia" title="Guia visual">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Indicador de Progresso -->
+    <aside class="indicador-progresso" aria-label="Você está em">
+        <p class="indicador-titulo">Você está em:</p>
+        <p class="indicador-atual">
+            <i class="fa-solid fa-house"></i>
+            <span>Página Inicial</span>
+        </p>
+    </aside>
+
+    <!-- Header Principal -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+                <div class="logo-texto">
+                    <span class="logo-nome">ET Bank</span>
+                    <span class="logo-tagline">Banco Digital Acessível</span>
+                </div>
+            </a>
+            
+            <div class="header-acoes">
+                <a href="#" class="btn btn-secundario">
+                    <i class="fa-solid fa-headset"></i>
+                    Ajuda
+                </a>
+                <a href="#" class="btn btn-primario">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Sair
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegação Principal -->
+    <nav class="nav-principal" role="navigation" aria-label="Menu principal">
+        <div class="nav-inner">
+            <ul class="nav-lista">
+                <li class="nav-item">
+                    <a href="#" class="nav-link ativo" aria-current="page">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Início</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                        <span>Transferir</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fa-solid fa-barcode"></i>
+                        <span>Pagar</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fa-solid fa-credit-card"></i>
+                        <span>Cartões</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fa-solid fa-piggy-bank"></i>
+                        <span>Investir</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Ajustes</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main id="conteudo-principal" class="main" role="main">
+        
+        <!-- Boas-vindas -->
+        <section class="boas-vindas" aria-labelledby="titulo-boas-vindas">
+            <h1 id="titulo-boas-vindas">Olá, Maria! 👋</h1>
+            <p>Seu dinheiro está seguro e você está no controle.</p>
+            
+            <div class="usuario-info">
+                <div class="usuario-avatar">M</div>
+                <div class="usuario-dados">
+                    <p class="usuario-nome">Maria Silva</p>
+                    <p class="usuario-conta">Conta: 12345-6 • Agência: 0001</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ajuda Contextual -->
+        <div class="ajuda-box" role="note">
+            <i class="fa-solid fa-lightbulb"></i>
+            <div class="ajuda-box-content">
+                <h4>Dica do dia</h4>
+                <p>Use as teclas <kbd>Tab</kbd> para navegar entre os elementos e <kbd>Enter</kbd> para selecionar. Pressione <kbd>Esc</kbd> para voltar.</p>
+            </div>
+        </div>
+
+        <!-- Saldos -->
+        <section class="saldo-section" aria-labelledby="titulo-saldos">
+            <h2 id="titulo-saldos" class="secao-titulo">
+                <i class="fa-solid fa-wallet"></i>
+                Seus Saldos
+            </h2>
+            
+            <div class="saldo-grid">
+                <div class="saldo-card destaque">
+                    <p class="saldo-tipo">
+                        <i class="fa-solid fa-building-columns"></i>
+                        Conta Corrente
+                    </p>
+                    <p class="saldo-valor" id="saldo-corrente">R$ 5.432,10</p>
+                    <button class="saldo-toggle" aria-label="Ocultar saldo">
+                        <i class="fa-solid fa-eye"></i>
+                        Ocultar valor
+                    </button>
+                    <div class="saldo-acoes">
+                        <a href="#" class="btn btn-primario">
+                            <i class="fa-solid fa-plus"></i> Depositar
+                        </a>
+                        <a href="#" class="btn btn-secundario">
+                            <i class="fa-solid fa-clock-rotate-left"></i> Extrato
+                        </a>
+                    </div>
+                </div>
+
+                <div class="saldo-card">
+                    <p class="saldo-tipo">
+                        <i class="fa-solid fa-piggy-bank"></i>
+                        Poupança
+                    </p>
+                    <p class="saldo-valor">R$ 12.850,00</p>
+                    <button class="saldo-toggle" aria-label="Ocultar saldo">
+                        <i class="fa-solid fa-eye"></i>
+                        Ocultar valor
+                    </button>
+                    <div class="saldo-acoes">
+                        <a href="#" class="btn btn-primario">
+                            <i class="fa-solid fa-arrow-right"></i> Transferir
+                        </a>
+                        <a href="#" class="btn btn-secundario">
+                            <i class="fa-solid fa-chart-line"></i> Rendimentos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ações Rápidas -->
+        <section class="acoes-rapidas" aria-labelledby="titulo-acoes">
+            <h2 id="titulo-acoes" class="secao-titulo">
+                <i class="fa-solid fa-bolt"></i>
+                Ações Rápidas
+            </h2>
+            
+            <div class="acoes-grid">
+                <a href="#" class="acao-card">
+                    <div class="acao-icon">
+                        <i class="fa-solid fa-qrcode"></i>
+                    </div>
+                    <h3>Pix</h3>
+                    <p>Envie e receba instantaneamente</p>
+                </a>
+
+                <a href="#" class="acao-card">
+                    <div class="acao-icon">
+                        <i class="fa-solid fa-barcode"></i>
+                    </div>
+                    <h3>Pagar Boleto</h3>
+                    <p>Escaneie ou digite o código</p>
+                </a>
+
+                <a href="#" class="acao-card">
+                    <div class="acao-icon">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <h3>Recarga</h3>
+                    <p>Celular, transporte e mais</p>
+                </a>
+
+                <a href="#" class="acao-card">
+                    <div class="acao-icon">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <h3>Empréstimo</h3>
+                    <p>Simule e contrate</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Histórico -->
+        <section class="historico" aria-labelledby="titulo-historico">
+            <h2 id="titulo-historico" class="secao-titulo">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                Últimas Movimentações
+            </h2>
+            
+            <div class="historico-lista">
+                <article class="historico-item">
+                    <div class="historico-icon entrada">
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </div>
+                    <div class="historico-info">
+                        <p class="historico-titulo">Pix Recebido</p>
+                        <p class="historico-data">Hoje às 14:32 • João Pedro</p>
+                    </div>
+                    <p class="historico-valor positivo">+ R$ 150,00</p>
+                </article>
+
+                <article class="historico-item">
+                    <div class="historico-icon saida">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </div>
+                    <div class="historico-info">
+                        <p class="historico-titulo">Pagamento de Boleto</p>
+                        <p class="historico-data">Ontem às 09:15 • Energia Elétrica</p>
+                    </div>
+                    <p class="historico-valor negativo">- R$ 187,45</p>
+                </article>
+
+                <article class="historico-item">
+                    <div class="historico-icon entrada">
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </div>
+                    <div class="historico-info">
+                        <p class="historico-titulo">Transferência Recebida</p>
+                        <p class="historico-data">18/12 às 16:00 • Empresa XYZ</p>
+                    </div>
+                    <p class="historico-valor positivo">+ R$ 3.500,00</p>
+                </article>
+
+                <article class="historico-item">
+                    <div class="historico-icon saida">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </div>
+                    <div class="historico-info">
+                        <p class="historico-titulo">Compra no Débito</p>
+                        <p class="historico-data">17/12 às 12:30 • Supermercado</p>
+                    </div>
+                    <p class="historico-valor negativo">- R$ 234,67</p>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <div class="logo-icon" style="width:36px;height:36px;font-size:18px;">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+                <span class="logo-nome" style="font-size:20px;">ET Bank</span>
+            </div>
+
+            <nav class="footer-links" aria-label="Links úteis">
+                <a href="#">Sobre nós</a>
+                <a href="#">Segurança</a>
+                <a href="#">Privacidade</a>
+                <a href="#">Termos de uso</a>
+                <a href="#">Tarifas</a>
+                <a href="#">Ouvidoria</a>
+            </nav>
+
+            <div class="footer-contato">
+                <div class="footer-contato-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>0800 123 4567</span>
+                </div>
+                <div class="footer-contato-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>ajuda@etbank.com.br</span>
+                </div>
+                <div class="footer-contato-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <span>24 horas, 7 dias</span>
+                </div>
+            </div>
+
+            <p class="footer-copy">
+                © 2024 ET Bank S.A. - CNPJ: 00.000.000/0001-00<br>
+                Banco fictício para demonstração de acessibilidade
+            </p>
+
+            <div class="footer-acessibilidade">
+                <p>
+                    <strong>🧠 Site desenvolvido com foco em neurodivergentes</strong><br>
+                    Design otimizado para pessoas com TEA e TDAH, seguindo as diretrizes WCAG 2.1 AAA
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+            
+            // =====================================================
+            // CONTROLES DE TEMA
+            // =====================================================
+            const temas = {
+                'tema-padrao': '',
+                'tema-calmo': 'tema-calmo',
+                'tema-contraste': 'tema-contraste',
+                'tema-escuro': 'tema-escuro'
+            };
+
+            Object.keys(temas).forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) {
+                    btn.addEventListener('click', () => {
+                        // Remove todos os temas
+                        Object.values(temas).forEach(tema => {
+                            if (tema) body.classList.remove(tema);
+                        });
+                        // Adiciona o tema selecionado
+                        if (temas[id]) body.classList.add(temas[id]);
+                        // Atualiza botões
+                        Object.keys(temas).forEach(btnId => {
+                            document.getElementById(btnId)?.classList.remove('ativo');
+                        });
+                        btn.classList.add('ativo');
+                        salvarPreferencias();
+                        anunciar('Tema alterado para ' + btn.textContent.trim());
+                    });
+                }
+            });
+
+            // =====================================================
+            // CONTROLES DE FONTE
+            // =====================================================
+            const fontes = {
+                'fonte-normal': '',
+                'fonte-grande': 'fonte-grande',
+                'fonte-muito-grande': 'fonte-muito-grande'
+            };
+
+            Object.keys(fontes).forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) {
+                    btn.addEventListener('click', () => {
+                        Object.values(fontes).forEach(fonte => {
+                            if (fonte) body.classList.remove(fonte);
+                        });
+                        if (fontes[id]) body.classList.add(fontes[id]);
+                        Object.keys(fontes).forEach(btnId => {
+                            document.getElementById(btnId)?.classList.remove('ativo');
+                        });
+                        btn.classList.add('ativo');
+                        salvarPreferencias();
+                        anunciar('Tamanho da fonte alterado');
+                    });
+                }
+            });
+
+            // =====================================================
+            // TOGGLE BUTTONS
+            // =====================================================
+            function setupToggle(btnId, className, mensagem) {
+                const btn = document.getElementById(btnId);
+                if (btn) {
+                    btn.addEventListener('click', () => {
+                        body.classList.toggle(className);
+                        btn.classList.toggle('ativo');
+                        salvarPreferencias();
+                        const status = body.classList.contains(className) ? 'ativado' : 'desativado';
+                        anunciar(mensagem + ' ' + status);
+                    });
+                }
+            }
+
+            setupToggle('btn-espacamento', 'espacamento-grande', 'Espaçamento extra');
+            setupToggle('btn-transicoes', 'com-transicoes', 'Transições suaves');
+            setupToggle('btn-foco', 'modo-foco', 'Modo foco');
+            setupToggle('btn-guia', 'guia-visual', 'Guia visual');
+
+            // =====================================================
+            // OCULTAR/MOSTRAR SALDO
+            // =====================================================
+            document.querySelectorAll('.saldo-toggle').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const card = this.closest('.saldo-card');
+                    const valor = card.querySelector('.saldo-valor');
+                    const icon = this.querySelector('i');
+                    
+                    if (valor.dataset.oculto === 'true') {
+                        valor.textContent = valor.dataset.valor;
+                        valor.dataset.oculto = 'false';
+                        icon.className = 'fa-solid fa-eye';
+                        this.querySelector('i').nextSibling.textContent = ' Ocultar valor';
+                    } else {
+                        valor.dataset.valor = valor.textContent;
+                        valor.textContent = '••••••';
+                        valor.dataset.oculto = 'true';
+                        icon.className = 'fa-solid fa-eye-slash';
+                        this.innerHTML = '<i class="fa-solid fa-eye-slash"></i> Mostrar valor';
+                    }
+                });
+            });
+
+            // =====================================================
+            // SALVAR/CARREGAR PREFERÊNCIAS
+            // =====================================================
+            function salvarPreferencias() {
+                const prefs = {
+                    tema: Array.from(body.classList).find(c => c.startsWith('tema-')) || '',
+                    fonte: Array.from(body.classList).find(c => c.startsWith('fonte-')) || '',
+                    espacamento: body.classList.contains('espacamento-grande'),
+                    transicoes: body.classList.contains('com-transicoes'),
+                    foco: body.classList.contains('modo-foco'),
+                    guia: body.classList.contains('guia-visual')
+                };
+                localStorage.setItem('etbank-prefs', JSON.stringify(prefs));
+            }
+
+            function carregarPreferencias() {
+                try {
+                    const prefs = JSON.parse(localStorage.getItem('etbank-prefs'));
+                    if (prefs) {
+                        if (prefs.tema) {
+                            body.classList.add(prefs.tema);
+                            document.getElementById(prefs.tema)?.classList.add('ativo');
+                            document.getElementById('tema-padrao')?.classList.remove('ativo');
+                        }
+                        if (prefs.fonte) {
+                            body.classList.add(prefs.fonte);
+                            document.getElementById(prefs.fonte)?.classList.add('ativo');
+                        }
+                        if (prefs.espacamento) {
+                            body.classList.add('espacamento-grande');
+                            document.getElementById('btn-espacamento')?.classList.add('ativo');
+                        }
+                        if (prefs.transicoes) {
+                            body.classList.add('com-transicoes');
+                            document.getElementById('btn-transicoes')?.classList.add('ativo');
+                        }
+                        if (prefs.foco) {
+                            body.classList.add('modo-foco');
+                            document.getElementById('btn-foco')?.classList.add('ativo');
+                        }
+                        if (prefs.guia) {
+                            body.classList.add('guia-visual');
+                            document.getElementById('btn-guia')?.classList.add('ativo');
+                        }
+                    }
+                } catch (e) {
+                    console.log('Erro ao carregar preferências:', e);
+                }
+            }
+
+            carregarPreferencias();
+
+            // =====================================================
+            // ANÚNCIOS PARA LEITORES DE TELA
+            // =====================================================
+            function anunciar(mensagem) {
+                const anuncio = document.createElement('div');
+                anuncio.setAttribute('role', 'status');
+                anuncio.setAttribute('aria-live', 'polite');
+                anuncio.setAttribute('aria-atomic', 'true');
+                anuncio.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;';
+                anuncio.textContent = mensagem;
+                document.body.appendChild(anuncio);
+                setTimeout(() => anuncio.remove(), 1000);
+            }
+
+            // =====================================================
+            // ATALHOS DE TECLADO
+            // =====================================================
+            document.addEventListener('keydown', function(e) {
+                // Alt + H: Ir para início
+                if (e.altKey && e.key === 'h') {
+                    e.preventDefault();
+                    document.querySelector('.boas-vindas')?.scrollIntoView();
+                    document.querySelector('.boas-vindas h1')?.focus();
+                }
+                // Alt + M: Ir para menu
+                if (e.altKey && e.key === 'm') {
+                    e.preventDefault();
+                    document.querySelector('.nav-link')?.focus();
+                }
+                // Alt + A: Abrir controles de acessibilidade
+                if (e.altKey && e.key === 'a') {
+                    e.preventDefault();
+                    document.querySelector('.barra-acessibilidade .btn-controle')?.focus();
+                }
+                // Escape: Desativar modo foco
+                if (e.key === 'Escape' && body.classList.contains('modo-foco')) {
+                    body.classList.remove('modo-foco');
+                    document.getElementById('btn-foco')?.classList.remove('ativo');
+                    anunciar('Modo foco desativado');
+                }
+            });
+
+            // =====================================================
+            // RESPEITAR PREFERÊNCIAS DO SISTEMA
+            // =====================================================
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                // Já está sem transições por padrão
+            }
+
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                // CSS já trata isso via media query
+            }
+        });
+    </script>
+</body>
+</html>

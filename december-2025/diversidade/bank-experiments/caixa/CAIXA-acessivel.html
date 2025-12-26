@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CAIXA - Versão Acessível para Neurodivergentes (TEA e TDAH)">
+    <title>CAIXA - Versão Acessível</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.caixa.gov.br/Style%20Library/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ========================================
+           VARIÁVEIS CSS - Cores da CAIXA
+        ======================================== */
+        :root {
+            --caixa-azul: #005CA9;
+            --caixa-azul-escuro: #003d70;
+            --caixa-azul-claro: #e8f4fc;
+            --caixa-laranja: #F37021;
+            --caixa-laranja-claro: #fff5ef;
+            --cor-texto: #333333;
+            --cor-texto-suave: #555555;
+            --cor-fundo: #ffffff;
+            --cor-fundo-secundario: #f8f9fa;
+            --cor-borda: #e0e0e0;
+            --cor-sucesso: #28a745;
+            --cor-foco: #ffcc00;
+            
+            /* Espaçamentos aumentados para melhor legibilidade */
+            --espacamento-pequeno: 12px;
+            --espacamento-medio: 24px;
+            --espacamento-grande: 40px;
+            
+            /* Fonte base maior */
+            --fonte-base: 18px;
+            --fonte-grande: 22px;
+            --fonte-titulo: 28px;
+            
+            /* Transições suaves */
+            --transicao: 0.2s ease;
+        }
+
+        /* Modo Alto Contraste */
+        .alto-contraste {
+            --cor-texto: #000000;
+            --cor-fundo: #ffffff;
+            --caixa-azul: #003366;
+            --cor-borda: #000000;
+        }
+
+        /* Modo Escuro */
+        .modo-escuro {
+            --cor-texto: #f0f0f0;
+            --cor-texto-suave: #cccccc;
+            --cor-fundo: #1a1a2e;
+            --cor-fundo-secundario: #16213e;
+            --caixa-azul-claro: #1a3a5c;
+            --cor-borda: #3a3a5c;
+        }
+
+        /* ========================================
+           RESET E BASE
+        ======================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: var(--fonte-base);
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* ========================================
+           FOCO VISÍVEL - Importante para acessibilidade
+        ======================================== */
+        *:focus {
+            outline: 3px solid var(--cor-foco);
+            outline-offset: 3px;
+        }
+
+        *:focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        *:focus-visible {
+            outline: 3px solid var(--cor-foco);
+            outline-offset: 3px;
+        }
+
+        /* ========================================
+           SKIP LINK - Pular para conteúdo
+        ======================================== */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--caixa-azul);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 0 0 8px 8px;
+            z-index: 10000;
+            font-weight: bold;
+            text-decoration: none;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* ========================================
+           BOTÃO TOGGLE SITE ORIGINAL/ADAPTADO
+        ======================================== */
+        .toggle-site-container {
+            position: fixed;
+            top: 8px;
+            right: 8px;
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            border: 1px solid var(--caixa-azul);
+            font-size: 11px;
+        }
+
+        .icon-label {
+            font-size: 14px;
+            color: var(--caixa-azul);
+            transition: all 0.2s ease;
+        }
+
+        .icon-label.active {
+            color: var(--caixa-laranja);
+        }
+
+        #icon-adaptado.active {
+            color: var(--caixa-laranja);
+        }
+
+        #icon-original.active {
+            color: var(--caixa-laranja);
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 36px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--caixa-azul);
+            border-radius: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-slider::before {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            left: 2px;
+            bottom: 2px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .toggle-switch input:checked + .toggle-slider {
+            background: var(--caixa-laranja);
+        }
+
+        .toggle-switch input:checked + .toggle-slider::before {
+            transform: translateX(18px);
+        }
+
+        .toggle-switch input:focus + .toggle-slider {
+            box-shadow: 0 0 0 2px var(--cor-foco);
+        }
+
+
+        /* Iframe para site original */
+        .iframe-original {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            z-index: 9999;
+            display: none;
+        }
+
+        .iframe-original.ativo {
+            display: block;
+        }
+
+        .conteudo-adaptado {
+            display: block;
+        }
+
+        .conteudo-adaptado.oculto {
+            display: none;
+        }
+
+        /* Responsivo toggle */
+        @media (max-width: 480px) {
+            .toggle-site-container {
+                top: 8px;
+                right: 8px;
+            }
+        }
+
+        /* ========================================
+           PAINEL DE ACESSIBILIDADE
+        ======================================== */
+        .painel-acessibilidade {
+            background: linear-gradient(135deg, var(--caixa-azul) 0%, var(--caixa-azul-escuro) 100%);
+            color: white;
+            padding: var(--espacamento-medio);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .painel-titulo {
+            text-align: center;
+            margin-bottom: var(--espacamento-medio);
+        }
+
+        .painel-titulo h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .painel-titulo .badge {
+            background: var(--caixa-laranja);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .controles-acessibilidade {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--espacamento-pequeno);
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn-acessibilidade {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transicao);
+            white-space: nowrap;
+        }
+
+        .btn-acessibilidade:hover,
+        .btn-acessibilidade:focus {
+            background: rgba(255,255,255,0.25);
+            border-color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-acessibilidade.ativo {
+            background: white;
+            color: var(--caixa-azul);
+            border-color: white;
+        }
+
+        .btn-acessibilidade i {
+            font-size: 1.1rem;
+        }
+
+        /* ========================================
+           HEADER
+        ======================================== */
+        .header {
+            background: var(--cor-fundo);
+            border-bottom: 3px solid var(--caixa-azul);
+            padding: var(--espacamento-medio) var(--espacamento-grande);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--espacamento-medio);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: var(--espacamento-pequeno);
+        }
+
+        .logo-container img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-texto {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-texto span:first-child {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--caixa-azul);
+        }
+
+        .logo-texto span:last-child {
+            font-size: 0.75rem;
+            color: var(--cor-texto-suave);
+        }
+
+        .header-acoes {
+            display: flex;
+            gap: var(--espacamento-pequeno);
+        }
+
+        .btn-conta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: var(--caixa-azul);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all var(--transicao);
+        }
+
+        .btn-conta:hover,
+        .btn-conta:focus {
+            background: var(--caixa-azul-escuro);
+            transform: scale(1.02);
+        }
+
+        /* ========================================
+           NAVEGAÇÃO SIMPLIFICADA
+        ======================================== */
+        .nav-principal {
+            background: var(--cor-fundo-secundario);
+            padding: var(--espacamento-medio);
+            border-bottom: 1px solid var(--cor-borda);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-titulo {
+            font-size: 1rem;
+            color: var(--cor-texto-suave);
+            margin-bottom: var(--espacamento-pequeno);
+            font-weight: 500;
+        }
+
+        .nav-lista {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--espacamento-pequeno);
+            list-style: none;
+        }
+
+        .nav-lista a {
+            display: block;
+            padding: 14px 24px;
+            background: white;
+            color: var(--caixa-azul);
+            text-decoration: none;
+            border-radius: 8px;
+            border: 2px solid var(--cor-borda);
+            font-weight: 500;
+            transition: all var(--transicao);
+        }
+
+        .nav-lista a:hover,
+        .nav-lista a:focus {
+            background: var(--caixa-azul);
+            color: white;
+            border-color: var(--caixa-azul);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,92,169,0.2);
+        }
+
+        /* ========================================
+           CONTEÚDO PRINCIPAL
+        ======================================== */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--espacamento-grande);
+        }
+
+        /* ========================================
+           SEÇÃO DE BOAS-VINDAS
+        ======================================== */
+        .boas-vindas {
+            background: linear-gradient(135deg, var(--caixa-azul-claro) 0%, white 100%);
+            border-radius: 16px;
+            padding: var(--espacamento-grande);
+            margin-bottom: var(--espacamento-grande);
+            border-left: 6px solid var(--caixa-azul);
+        }
+
+        .boas-vindas h1 {
+            font-size: var(--fonte-titulo);
+            color: var(--caixa-azul);
+            margin-bottom: var(--espacamento-pequeno);
+        }
+
+        .boas-vindas p {
+            font-size: var(--fonte-grande);
+            color: var(--cor-texto-suave);
+            max-width: 800px;
+        }
+
+        .dica-uso {
+            background: white;
+            border: 2px solid var(--caixa-azul);
+            border-radius: 12px;
+            padding: var(--espacamento-medio);
+            margin-top: var(--espacamento-medio);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--espacamento-pequeno);
+        }
+
+        .dica-uso i {
+            color: var(--caixa-laranja);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .dica-uso p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* ========================================
+           ACESSO RÁPIDO
+        ======================================== */
+        .secao-titulo {
+            font-size: 1.4rem;
+            color: var(--caixa-azul);
+            margin-bottom: var(--espacamento-medio);
+            padding-bottom: var(--espacamento-pequeno);
+            border-bottom: 3px solid var(--caixa-laranja);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .acesso-rapido {
+            margin-bottom: var(--espacamento-grande);
+        }
+
+        .acesso-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--espacamento-medio);
+        }
+
+        .acesso-card {
+            background: var(--cor-fundo);
+            border: 2px solid var(--cor-borda);
+            border-radius: 12px;
+            padding: var(--espacamento-medio);
+            text-decoration: none;
+            color: var(--cor-texto);
+            transition: all var(--transicao);
+            display: flex;
+            align-items: center;
+            gap: var(--espacamento-medio);
+        }
+
+        .acesso-card:hover,
+        .acesso-card:focus {
+            border-color: var(--caixa-azul);
+            box-shadow: 0 8px 24px rgba(0,92,169,0.15);
+            transform: translateY(-4px);
+        }
+
+        .acesso-card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--caixa-azul-claro);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .acesso-card-icon i {
+            font-size: 1.5rem;
+            color: var(--caixa-azul);
+        }
+
+        .acesso-card-content h3 {
+            font-size: 1.1rem;
+            color: var(--caixa-azul);
+            margin-bottom: 4px;
+        }
+
+        .acesso-card-content p {
+            font-size: 0.9rem;
+            color: var(--cor-texto-suave);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           SERVIÇOS POR CATEGORIA
+        ======================================== */
+        .categorias {
+            margin-bottom: var(--espacamento-grande);
+        }
+
+        .categoria-grupo {
+            margin-bottom: var(--espacamento-grande);
+        }
+
+        .categoria-header {
+            background: var(--caixa-azul);
+            color: white;
+            padding: var(--espacamento-medio);
+            border-radius: 12px 12px 0 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all var(--transicao);
+        }
+
+        .categoria-header:hover,
+        .categoria-header:focus {
+            background: var(--caixa-azul-escuro);
+        }
+
+        .categoria-header h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+        }
+
+        .categoria-header .seta {
+            transition: transform var(--transicao);
+        }
+
+        .categoria-header[aria-expanded="false"] .seta {
+            transform: rotate(-90deg);
+        }
+
+        .categoria-content {
+            background: var(--cor-fundo-secundario);
+            border: 2px solid var(--cor-borda);
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            padding: var(--espacamento-medio);
+        }
+
+        .categoria-content[hidden] {
+            display: none;
+        }
+
+        .servicos-lista {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--espacamento-pequeno);
+            list-style: none;
+        }
+
+        .servicos-lista a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: white;
+            color: var(--cor-texto);
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid var(--cor-borda);
+            transition: all var(--transicao);
+        }
+
+        .servicos-lista a:hover,
+        .servicos-lista a:focus {
+            background: var(--caixa-azul-claro);
+            border-color: var(--caixa-azul);
+            color: var(--caixa-azul);
+        }
+
+        .servicos-lista i {
+            color: var(--caixa-laranja);
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* ========================================
+           DESTAQUES
+        ======================================== */
+        .destaques {
+            margin-bottom: var(--espacamento-grande);
+        }
+
+        .destaques-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--espacamento-medio);
+        }
+
+        .destaque-card {
+            background: var(--cor-fundo);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid var(--cor-borda);
+            transition: all var(--transicao);
+        }
+
+        .destaque-card:hover,
+        .destaque-card:focus-within {
+            border-color: var(--caixa-azul);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .destaque-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: var(--caixa-azul-claro);
+        }
+
+        .destaque-content {
+            padding: var(--espacamento-medio);
+        }
+
+        .destaque-content h3 {
+            font-size: 1.2rem;
+            color: var(--caixa-azul);
+            margin-bottom: 8px;
+        }
+
+        .destaque-content p {
+            color: var(--cor-texto-suave);
+            margin-bottom: var(--espacamento-pequeno);
+            line-height: 1.6;
+        }
+
+        .destaque-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--caixa-laranja);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transicao);
+        }
+
+        .destaque-link:hover,
+        .destaque-link:focus {
+            color: var(--caixa-azul);
+            gap: 12px;
+        }
+
+        /* ========================================
+           INFORMAÇÕES DE CONTATO
+        ======================================== */
+        .contato {
+            background: var(--cor-fundo-secundario);
+            border-radius: 16px;
+            padding: var(--espacamento-grande);
+            margin-bottom: var(--espacamento-grande);
+        }
+
+        .contato-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--espacamento-medio);
+        }
+
+        .contato-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--espacamento-pequeno);
+            padding: var(--espacamento-medio);
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--cor-borda);
+        }
+
+        .contato-item i {
+            font-size: 1.5rem;
+            color: var(--caixa-azul);
+            flex-shrink: 0;
+        }
+
+        .contato-item h4 {
+            font-size: 1rem;
+            color: var(--caixa-azul);
+            margin-bottom: 4px;
+        }
+
+        .contato-item p {
+            font-size: 0.95rem;
+            color: var(--cor-texto-suave);
+        }
+
+        .contato-item a {
+            color: var(--caixa-laranja);
+            font-weight: 600;
+        }
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+        .footer {
+            background: var(--caixa-azul);
+            color: white;
+            padding: var(--espacamento-grande);
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            margin-bottom: var(--espacamento-medio);
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--espacamento-medio);
+            margin-bottom: var(--espacamento-medio);
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity var(--transicao);
+        }
+
+        .footer-links a:hover,
+        .footer-links a:focus {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: var(--espacamento-pequeno);
+            margin-bottom: var(--espacamento-medio);
+        }
+
+        .footer-social a {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all var(--transicao);
+        }
+
+        .footer-social a:hover,
+        .footer-social a:focus {
+            background: white;
+            color: var(--caixa-azul);
+        }
+
+        .footer-info {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ========================================
+           MODO FOCO - Esconde elementos não essenciais
+        ======================================== */
+        .modo-foco .destaques,
+        .modo-foco .footer-social,
+        .modo-foco .footer-links {
+            display: none;
+        }
+
+        .modo-foco .categoria-content {
+            display: block !important;
+        }
+
+        /* ========================================
+           FONTE MAIOR
+        ======================================== */
+        .fonte-maior {
+            --fonte-base: 20px;
+            --fonte-grande: 24px;
+            --fonte-titulo: 32px;
+        }
+
+        /* ========================================
+           ESPAÇAMENTO MAIOR
+        ======================================== */
+        .espacamento-maior {
+            --espacamento-pequeno: 18px;
+            --espacamento-medio: 32px;
+            --espacamento-grande: 56px;
+        }
+
+        /* ========================================
+           SEM ANIMAÇÕES
+        ======================================== */
+        .sem-animacoes,
+        .sem-animacoes * {
+            transition: none !important;
+            animation: none !important;
+        }
+
+        /* ========================================
+           RESPONSIVE
+        ======================================== */
+        @media (max-width: 768px) {
+            :root {
+                --espacamento-grande: 24px;
+                --espacamento-medio: 16px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .controles-acessibilidade {
+                flex-direction: column;
+            }
+
+            .btn-acessibilidade {
+                justify-content: center;
+            }
+
+            .destaques-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .acesso-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+        ======================================== */
+        @media print {
+            .painel-acessibilidade,
+            .footer-social {
+                display: none;
+            }
+
+            .main-content {
+                max-width: 100%;
+            }
+        }
+
+        /* ========================================
+           ANIMAÇÃO DE LOADING (opcional, controlável)
+        ======================================== */
+        .loading {
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .sem-animacoes .loading {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link para pular direto ao conteúdo -->
+    <a href="#conteudo-principal" class="skip-link">
+        Pular para o conteúdo principal
+    </a>
+
+    <!-- Botão Toggle Site Original/Adaptado -->
+    <div class="toggle-site-container" role="group" aria-label="Alternar entre versão adaptada e original">
+        <i class="fa-solid fa-universal-access icon-label" id="icon-adaptado" aria-hidden="true" title="Versão Adaptada"></i>
+        <label class="toggle-switch" title="Alternar entre versão adaptada e original">
+            <input type="checkbox" id="toggle-site" aria-describedby="toggle-descricao">
+            <span class="toggle-slider"></span>
+        </label>
+        <i class="fa-solid fa-globe icon-label" id="icon-original" aria-hidden="true" title="Site Original"></i>
+        <span id="toggle-descricao" style="position:absolute;left:-9999px;">Alterna entre a versão acessível adaptada e o site original da CAIXA</span>
+    </div>
+
+    <!-- Iframe para carregar site original -->
+    <iframe id="iframe-original" class="iframe-original" title="Site original da CAIXA" aria-hidden="true"></iframe>
+
+    <!-- Painel de Controles de Acessibilidade -->
+    <div class="painel-acessibilidade" role="region" aria-label="Controles de acessibilidade">
+        <div class="painel-titulo">
+            <h2>
+                <i class="fa-solid fa-universal-access"></i>
+                Controles de Acessibilidade
+                <span class="badge">TEA & TDAH</span>
+            </h2>
+        </div>
+        <div class="controles-acessibilidade">
+            <button type="button" class="btn-acessibilidade" id="btn-fonte" aria-pressed="false" title="Aumentar tamanho da fonte">
+                <i class="fa-solid fa-text-height"></i>
+                Fonte Maior
+            </button>
+            <button type="button" class="btn-acessibilidade" id="btn-espacamento" aria-pressed="false" title="Aumentar espaçamento entre elementos">
+                <i class="fa-solid fa-arrows-alt-v"></i>
+                Mais Espaço
+            </button>
+            <button type="button" class="btn-acessibilidade" id="btn-contraste" aria-pressed="false" title="Ativar alto contraste">
+                <i class="fa-solid fa-adjust"></i>
+                Alto Contraste
+            </button>
+            <button type="button" class="btn-acessibilidade" id="btn-escuro" aria-pressed="false" title="Ativar modo escuro">
+                <i class="fa-solid fa-moon"></i>
+                Modo Escuro
+            </button>
+            <button type="button" class="btn-acessibilidade" id="btn-animacoes" aria-pressed="false" title="Desativar todas as animações">
+                <i class="fa-solid fa-pause"></i>
+                Sem Animações
+            </button>
+            <button type="button" class="btn-acessibilidade" id="btn-foco" aria-pressed="false" title="Modo foco - mostra apenas o essencial">
+                <i class="fa-solid fa-eye"></i>
+                Modo Foco
+            </button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="./CAIXA_files/x-volume-positiva-54-v2.png" alt="Logo CAIXA" onerror="this.style.display='none'">
+                <div class="logo-texto">
+                    <span>CAIXA</span>
+                    <span>Versão Acessível</span>
+                </div>
+            </div>
+            <div class="header-acoes">
+                <a href="https://internetbanking.caixa.gov.br/" class="btn-conta" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-lock"></i>
+                    Acessar Minha Conta
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegação Principal Simplificada -->
+    <nav class="nav-principal" role="navigation" aria-label="Menu principal">
+        <div class="nav-container">
+            <p class="nav-titulo">Navegue pelo site:</p>
+            <ul class="nav-lista">
+                <li><a href="#acesso-rapido">Acesso Rápido</a></li>
+                <li><a href="#para-voce">Para Você</a></li>
+                <li><a href="#beneficios">Benefícios</a></li>
+                <li><a href="#empresa">Para Empresas</a></li>
+                <li><a href="#destaques">Destaques</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main id="conteudo-principal" class="main-content loading" role="main">
+        
+        <!-- Boas-vindas -->
+        <section class="boas-vindas" aria-labelledby="titulo-boas-vindas">
+            <h1 id="titulo-boas-vindas">Bem-vindo à CAIXA Acessível</h1>
+            <p>Esta versão do site foi desenvolvida para pessoas neurodivergentes, com interface simplificada e controles de personalização.</p>
+            
+            <div class="dica-uso">
+                <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
+                <p><strong>Dica:</strong> Use os botões no topo da página para ajustar a aparência do site conforme sua preferência. Você pode aumentar a fonte, reduzir animações ou ativar o modo foco para ver apenas o essencial.</p>
+            </div>
+        </section>
+
+        <!-- Acesso Rápido -->
+        <section id="acesso-rapido" class="acesso-rapido" aria-labelledby="titulo-acesso-rapido">
+            <h2 id="titulo-acesso-rapido" class="secao-titulo">
+                <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+                Acesso Rápido
+            </h2>
+            
+            <div class="acesso-grid">
+                <a href="https://www.caixa.gov.br/abrircontadigital" class="acesso-card">
+                    <div class="acesso-card-icon">
+                        <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+                    </div>
+                    <div class="acesso-card-content">
+                        <h3>Abrir Conta</h3>
+                        <p>Abra sua conta digital de forma simples e rápida</p>
+                    </div>
+                </a>
+
+                <a href="https://www.caixa.gov.br/beneficios-trabalhador/fgts/Paginas/default.aspx" class="acesso-card">
+                    <div class="acesso-card-icon">
+                        <i class="fa-solid fa-piggy-bank" aria-hidden="true"></i>
+                    </div>
+                    <div class="acesso-card-content">
+                        <h3>FGTS</h3>
+                        <p>Consulte saldo, extrato e faça saques</p>
+                    </div>
+                </a>
+
+                <a href="https://www.caixa.gov.br/voce/negociacao/Paginas/default.aspx" class="acesso-card">
+                    <div class="acesso-card-icon">
+                        <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+                    </div>
+                    <div class="acesso-card-content">
+                        <h3>Negocie sua Dívida</h3>
+                        <p>Renegocie suas dívidas com condições especiais</p>
+                    </div>
+                </a>
+
+                <a href="https://www.caixa.gov.br/atendimento/2-via-boleto/paginas/default.aspx" class="acesso-card">
+                    <div class="acesso-card-icon">
+                        <i class="fa-solid fa-file-invoice" aria-hidden="true"></i>
+                    </div>
+                    <div class="acesso-card-content">
+                        <h3>2ª Via de Boletos</h3>
+                        <p>Emita a segunda via dos seus boletos</p>
+                    </div>
+                </a>
+
+                <a href="https://www.caixa.gov.br/caixatem/Paginas/default.aspx" class="acesso-card">
+                    <div class="acesso-card-icon">
+                        <i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>
+                    </div>
+                    <div class="acesso-card-content">
+                        <h3>CAIXA Tem</h3>
+                        <p>App para gerenciar benefícios e serviços</p>
+                    </div>
+                </a>
+
+                <a href="https://www.caixa.gov.br/atendimento/consulta-contratos/Paginas/default.aspx" class="acesso-card">
+                    <div class="acesso-card-icon">
+                        <i class="fa-solid fa-file-contract" aria-hidden="true"></i>
+                    </div>
+                    <div class="acesso-card-content">
+                        <h3>Meus Contratos</h3>
+                        <p>Consulte seus contratos na CAIXA</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Categorias de Serviços -->
+        <section id="para-voce" class="categorias" aria-labelledby="titulo-categorias">
+            <h2 id="titulo-categorias" class="secao-titulo">
+                <i class="fa-solid fa-list" aria-hidden="true"></i>
+                Serviços por Categoria
+            </h2>
+
+            <!-- Para Você -->
+            <div class="categoria-grupo">
+                <button class="categoria-header" aria-expanded="true" aria-controls="content-voce" id="header-voce">
+                    <h3>
+                        <i class="fa-solid fa-user" aria-hidden="true"></i>
+                        Para Você
+                    </h3>
+                    <i class="fa-solid fa-chevron-down seta" aria-hidden="true"></i>
+                </button>
+                <div class="categoria-content" id="content-voce" aria-labelledby="header-voce">
+                    <ul class="servicos-lista">
+                        <li><a href="https://www.caixa.gov.br/voce/cartoes/Paginas/default.aspx">
+                            <i class="fa-solid fa-credit-card" aria-hidden="true"></i> Cartões
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/voce/contas/Paginas/default.aspx">
+                            <i class="fa-solid fa-wallet" aria-hidden="true"></i> Contas
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/voce/credito-financiamento/Paginas/default.aspx">
+                            <i class="fa-solid fa-money-bill-transfer" aria-hidden="true"></i> Empréstimos
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/voce/habitacao/Paginas/default.aspx">
+                            <i class="fa-solid fa-house" aria-hidden="true"></i> Habitação
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/investimentos/Paginas/default.aspx">
+                            <i class="fa-solid fa-chart-line" aria-hidden="true"></i> Investimentos
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/voce/Seguros/Paginas/Seguros.aspx">
+                            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Seguros
+                        </a></li>
+                        <li><a href="https://loterias.caixa.gov.br/Paginas/default.aspx">
+                            <i class="fa-solid fa-clover" aria-hidden="true"></i> Loterias
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/servicos/cpf/Paginas/default.aspx">
+                            <i class="fa-solid fa-id-card" aria-hidden="true"></i> CPF
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Benefícios -->
+            <div class="categoria-grupo" id="beneficios">
+                <button class="categoria-header" aria-expanded="true" aria-controls="content-beneficios" id="header-beneficios">
+                    <h3>
+                        <i class="fa-solid fa-gift" aria-hidden="true"></i>
+                        Benefícios do Trabalhador
+                    </h3>
+                    <i class="fa-solid fa-chevron-down seta" aria-hidden="true"></i>
+                </button>
+                <div class="categoria-content" id="content-beneficios" aria-labelledby="header-beneficios">
+                    <ul class="servicos-lista">
+                        <li><a href="https://www.caixa.gov.br/beneficios-trabalhador/fgts/Paginas/default.aspx">
+                            <i class="fa-solid fa-piggy-bank" aria-hidden="true"></i> FGTS
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/beneficios-trabalhador/abono-salarial/Paginas/default.aspx">
+                            <i class="fa-solid fa-sack-dollar" aria-hidden="true"></i> Abono Salarial / PIS
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/beneficios-trabalhador/seguro-desemprego/Paginas/default.aspx">
+                            <i class="fa-solid fa-briefcase" aria-hidden="true"></i> Seguro-Desemprego
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/beneficios-trabalhador/inss/Paginas/default.aspx">
+                            <i class="fa-solid fa-user-shield" aria-hidden="true"></i> INSS
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/programas-sociais/bolsa-familia/Paginas/default.aspx">
+                            <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> Bolsa Família
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/programas-sociais/pe-de-meia/Paginas/default.aspx">
+                            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Pé-de-Meia
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/voce/habitacao/minha-casa-minha-vida/Paginas/default.aspx">
+                            <i class="fa-solid fa-house-chimney" aria-hidden="true"></i> Minha Casa Minha Vida
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/programas-sociais/fies/Paginas/default.aspx">
+                            <i class="fa-solid fa-book" aria-hidden="true"></i> FIES
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Para Empresas -->
+            <div class="categoria-grupo" id="empresa">
+                <button class="categoria-header" aria-expanded="false" aria-controls="content-empresa" id="header-empresa">
+                    <h3>
+                        <i class="fa-solid fa-building" aria-hidden="true"></i>
+                        Para Empresas
+                    </h3>
+                    <i class="fa-solid fa-chevron-down seta" aria-hidden="true"></i>
+                </button>
+                <div class="categoria-content" id="content-empresa" aria-labelledby="header-empresa" hidden>
+                    <ul class="servicos-lista">
+                        <li><a href="https://www.caixa.gov.br/empresa/contas/Paginas/default.aspx">
+                            <i class="fa-solid fa-building-columns" aria-hidden="true"></i> Conta Empresarial
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/empresa/cartoes/Paginas/default.aspx">
+                            <i class="fa-solid fa-credit-card" aria-hidden="true"></i> Cartões PJ
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/empresa/credito-financiamento/Paginas/default.aspx">
+                            <i class="fa-solid fa-coins" aria-hidden="true"></i> Crédito e Financiamento
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/empresa/conectividade-social/Paginas/default.aspx">
+                            <i class="fa-solid fa-network-wired" aria-hidden="true"></i> Conectividade Social
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/empresa/pagamentos-recebimentos/recebimentos/azulzinha/Paginas/default.aspx">
+                            <i class="fa-solid fa-cash-register" aria-hidden="true"></i> Azulzinha
+                        </a></li>
+                        <li><a href="https://www.caixa.gov.br/agro/Paginas/default.aspx">
+                            <i class="fa-solid fa-tractor" aria-hidden="true"></i> Agro
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Destaques -->
+        <section id="destaques" class="destaques" aria-labelledby="titulo-destaques">
+            <h2 id="titulo-destaques" class="secao-titulo">
+                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                Destaques
+            </h2>
+
+            <div class="destaques-grid">
+                <article class="destaque-card">
+                    <img src="./CAIXA_files/destaque-home-site-caixa-2024-habitacao-v3.png" alt="Habitação CAIXA" class="destaque-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 180%22%3E%3Crect fill=%22%23e8f4fc%22 width=%22400%22 height=%22180%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23005CA9%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22%3EHabita%C3%A7%C3%A3o%3C/text%3E%3C/svg%3E'">
+                    <div class="destaque-content">
+                        <h3>Financiamento Habitacional</h3>
+                        <p>Realize o sonho da casa própria com as melhores condições de financiamento do mercado.</p>
+                        <a href="https://www.caixa.gov.br/voce/habitacao/Paginas/default.aspx" class="destaque-link">
+                            Saiba mais <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="destaque-card">
+                    <img src="./CAIXA_files/destaque-home-site-caixa-2024-cartoes-v2.png" alt="Cartões CAIXA" class="destaque-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 180%22%3E%3Crect fill=%22%23fff5ef%22 width=%22400%22 height=%22180%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23F37021%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22%3ECart%C3%B5es%3C/text%3E%3C/svg%3E'">
+                    <div class="destaque-content">
+                        <h3>Cartões CAIXA</h3>
+                        <p>Conheça os cartões de crédito e débito com benefícios exclusivos para você.</p>
+                        <a href="https://www.caixa.gov.br/voce/cartoes/Paginas/default.aspx" class="destaque-link">
+                            Saiba mais <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="destaque-card">
+                    <img src="./CAIXA_files/destaque-home-site-caixa-2024-investimento-v2.png" alt="Investimentos CAIXA" class="destaque-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 180%22%3E%3Crect fill=%22%23e8f4fc%22 width=%22400%22 height=%22180%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%23005CA9%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22%3EInvestimentos%3C/text%3E%3C/svg%3E'">
+                    <div class="destaque-content">
+                        <h3>Investimentos</h3>
+                        <p>Faça seu dinheiro render com segurança nos investimentos da CAIXA.</p>
+                        <a href="https://www.caixa.gov.br/investimentos/Paginas/default.aspx" class="destaque-link">
+                            Saiba mais <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section id="contato" class="contato" aria-labelledby="titulo-contato">
+            <h2 id="titulo-contato" class="secao-titulo">
+                <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                Canais de Atendimento
+            </h2>
+
+            <div class="contato-grid">
+                <div class="contato-item">
+                    <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                    <div>
+                        <h4>SAC CAIXA</h4>
+                        <p><a href="tel:08007260101">0800 726 0101</a></p>
+                        <p>Atendimento 24 horas</p>
+                    </div>
+                </div>
+
+                <div class="contato-item">
+                    <i class="fa-solid fa-wheelchair" aria-hidden="true"></i>
+                    <div>
+                        <h4>Deficientes Auditivos</h4>
+                        <p><a href="tel:08007260207">0800 726 0207</a></p>
+                        <p>Atendimento especializado</p>
+                    </div>
+                </div>
+
+                <div class="contato-item">
+                    <i class="fa-solid fa-headset" aria-hidden="true"></i>
+                    <div>
+                        <h4>Ouvidoria</h4>
+                        <p><a href="tel:08007252500">0800 725 2500</a></p>
+                        <p>Segunda a sexta, 8h às 18h</p>
+                    </div>
+                </div>
+
+                <div class="contato-item">
+                    <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                    <div>
+                        <h4>Encontre uma Agência</h4>
+                        <p><a href="https://www.caixa.gov.br/atendimento/Paginas/encontre-a-caixa.aspx">Buscar agências próximas</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./CAIXA_files/logo-caixa-branco.png" alt="CAIXA" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=font-size:1.5rem;font-weight:bold>CAIXA</span>';">
+            </div>
+
+            <div class="footer-links">
+                <a href="https://www.caixa.gov.br/sobre-a-caixa/Paginas/default.aspx">Sobre a CAIXA</a>
+                <a href="https://www.caixa.gov.br/seguranca/Paginas/default.aspx">Segurança</a>
+                <a href="https://www.caixa.gov.br/privacidade/aviso-de-privacidade">Privacidade</a>
+                <a href="https://www.caixa.gov.br/acesso-a-informacao/Paginas/default.aspx">Acesso à Informação</a>
+                <a href="https://www.caixa.gov.br/faleconosco/Paginas/default.aspx">Fale Conosco</a>
+            </div>
+
+            <div class="footer-social" aria-label="Redes sociais">
+                <a href="https://www.instagram.com/caixa" aria-label="Instagram da CAIXA" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.youtube.com/canalcaixa" aria-label="YouTube da CAIXA" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.facebook.com/caixa" aria-label="Facebook da CAIXA" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.twitter.com/caixa" aria-label="Twitter da CAIXA" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-twitter" aria-hidden="true"></i>
+                </a>
+            </div>
+
+            <p class="footer-info">
+                © 2024 CAIXA Econômica Federal - O banco de todos os brasileiros<br>
+                Versão acessível desenvolvida para pessoas neurodivergentes
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript para controles de acessibilidade -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos
+            const body = document.body;
+            const btnFonte = document.getElementById('btn-fonte');
+            const btnEspacamento = document.getElementById('btn-espacamento');
+            const btnContraste = document.getElementById('btn-contraste');
+            const btnEscuro = document.getElementById('btn-escuro');
+            const btnAnimacoes = document.getElementById('btn-animacoes');
+            const btnFoco = document.getElementById('btn-foco');
+            
+            // Carregar preferências salvas
+            carregarPreferencias();
+
+            // Função para toggle de classe e atualização de botão
+            function toggleOption(btn, className) {
+                body.classList.toggle(className);
+                const isActive = body.classList.contains(className);
+                btn.classList.toggle('ativo', isActive);
+                btn.setAttribute('aria-pressed', isActive);
+                salvarPreferencias();
+                
+                // Anúncio para leitores de tela
+                const status = isActive ? 'ativado' : 'desativado';
+                anunciar(`${btn.textContent.trim()} ${status}`);
+            }
+
+            // Event Listeners
+            btnFonte.addEventListener('click', () => toggleOption(btnFonte, 'fonte-maior'));
+            btnEspacamento.addEventListener('click', () => toggleOption(btnEspacamento, 'espacamento-maior'));
+            btnContraste.addEventListener('click', () => {
+                body.classList.remove('modo-escuro');
+                btnEscuro.classList.remove('ativo');
+                btnEscuro.setAttribute('aria-pressed', 'false');
+                toggleOption(btnContraste, 'alto-contraste');
+            });
+            btnEscuro.addEventListener('click', () => {
+                body.classList.remove('alto-contraste');
+                btnContraste.classList.remove('ativo');
+                btnContraste.setAttribute('aria-pressed', 'false');
+                toggleOption(btnEscuro, 'modo-escuro');
+            });
+            btnAnimacoes.addEventListener('click', () => toggleOption(btnAnimacoes, 'sem-animacoes'));
+            btnFoco.addEventListener('click', () => toggleOption(btnFoco, 'modo-foco'));
+
+            // Accordion das categorias
+            document.querySelectorAll('.categoria-header').forEach(header => {
+                header.addEventListener('click', function() {
+                    const expanded = this.getAttribute('aria-expanded') === 'true';
+                    const content = document.getElementById(this.getAttribute('aria-controls'));
+                    
+                    this.setAttribute('aria-expanded', !expanded);
+                    content.hidden = expanded;
+                });
+            });
+
+            // Salvar preferências no localStorage
+            function salvarPreferencias() {
+                const preferencias = {
+                    fonteMaior: body.classList.contains('fonte-maior'),
+                    espacamentoMaior: body.classList.contains('espacamento-maior'),
+                    altoContraste: body.classList.contains('alto-contraste'),
+                    modoEscuro: body.classList.contains('modo-escuro'),
+                    semAnimacoes: body.classList.contains('sem-animacoes'),
+                    modoFoco: body.classList.contains('modo-foco')
+                };
+                localStorage.setItem('caixa-acessibilidade', JSON.stringify(preferencias));
+            }
+
+            // Carregar preferências do localStorage
+            function carregarPreferencias() {
+                try {
+                    const preferencias = JSON.parse(localStorage.getItem('caixa-acessibilidade'));
+                    if (preferencias) {
+                        if (preferencias.fonteMaior) {
+                            body.classList.add('fonte-maior');
+                            btnFonte.classList.add('ativo');
+                            btnFonte.setAttribute('aria-pressed', 'true');
+                        }
+                        if (preferencias.espacamentoMaior) {
+                            body.classList.add('espacamento-maior');
+                            btnEspacamento.classList.add('ativo');
+                            btnEspacamento.setAttribute('aria-pressed', 'true');
+                        }
+                        if (preferencias.altoContraste) {
+                            body.classList.add('alto-contraste');
+                            btnContraste.classList.add('ativo');
+                            btnContraste.setAttribute('aria-pressed', 'true');
+                        }
+                        if (preferencias.modoEscuro) {
+                            body.classList.add('modo-escuro');
+                            btnEscuro.classList.add('ativo');
+                            btnEscuro.setAttribute('aria-pressed', 'true');
+                        }
+                        if (preferencias.semAnimacoes) {
+                            body.classList.add('sem-animacoes');
+                            btnAnimacoes.classList.add('ativo');
+                            btnAnimacoes.setAttribute('aria-pressed', 'true');
+                        }
+                        if (preferencias.modoFoco) {
+                            body.classList.add('modo-foco');
+                            btnFoco.classList.add('ativo');
+                            btnFoco.setAttribute('aria-pressed', 'true');
+                        }
+                    }
+                } catch (e) {
+                    console.log('Erro ao carregar preferências:', e);
+                }
+            }
+
+            // Anúncio para leitores de tela
+            function anunciar(mensagem) {
+                const anuncio = document.createElement('div');
+                anuncio.setAttribute('role', 'status');
+                anuncio.setAttribute('aria-live', 'polite');
+                anuncio.setAttribute('aria-atomic', 'true');
+                anuncio.style.cssText = 'position:absolute;left:-9999px;';
+                anuncio.textContent = mensagem;
+                document.body.appendChild(anuncio);
+                setTimeout(() => anuncio.remove(), 1000);
+            }
+
+            // Respeitar preferência de movimento reduzido do sistema
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                body.classList.add('sem-animacoes');
+                btnAnimacoes.classList.add('ativo');
+                btnAnimacoes.setAttribute('aria-pressed', 'true');
+            }
+
+            // Atalhos de teclado
+            document.addEventListener('keydown', function(e) {
+                // Alt + 1: Ir para conteúdo principal
+                if (e.altKey && e.key === '1') {
+                    e.preventDefault();
+                    document.getElementById('conteudo-principal').focus();
+                }
+                // Alt + 2: Ir para navegação
+                if (e.altKey && e.key === '2') {
+                    e.preventDefault();
+                    document.querySelector('.nav-principal').focus();
+                }
+                // Escape: Fechar modo foco se ativo
+                if (e.key === 'Escape' && body.classList.contains('modo-foco')) {
+                    toggleOption(btnFoco, 'modo-foco');
+                }
+            });
+
+            // ========================================
+            // TOGGLE SITE ORIGINAL / ADAPTADO
+            // ========================================
+            const toggleSite = document.getElementById('toggle-site');
+            const iframeOriginal = document.getElementById('iframe-original');
+            const iconAdaptado = document.getElementById('icon-adaptado');
+            const iconOriginal = document.getElementById('icon-original');
+            
+            // Inicializar ícone adaptado como ativo
+            iconAdaptado.classList.add('active');
+            const painelAcessibilidade = document.querySelector('.painel-acessibilidade');
+            const header = document.querySelector('.header');
+            const navPrincipal = document.querySelector('.nav-principal');
+            const mainContent = document.querySelector('.main-content');
+            const footer = document.querySelector('.footer');
+
+            // URL do site original
+            const urlSiteOriginal = './CAIXA.html';
+
+            toggleSite.addEventListener('change', function() {
+                const mostrarOriginal = this.checked;
+                
+                if (mostrarOriginal) {
+                    // Mostrar site original
+                    iframeOriginal.src = urlSiteOriginal;
+                    iframeOriginal.classList.add('ativo');
+                    iframeOriginal.setAttribute('aria-hidden', 'false');
+                    
+                    // Ocultar conteúdo adaptado
+                    painelAcessibilidade.style.display = 'none';
+                    header.style.display = 'none';
+                    navPrincipal.style.display = 'none';
+                    mainContent.style.display = 'none';
+                    footer.style.display = 'none';
+                    
+                    // Atualizar ícones
+                    iconAdaptado.classList.remove('active');
+                    iconOriginal.classList.add('active');
+                    
+                    anunciar('Site original da CAIXA carregado');
+                } else {
+                    // Mostrar site adaptado
+                    iframeOriginal.classList.remove('ativo');
+                    iframeOriginal.setAttribute('aria-hidden', 'true');
+                    iframeOriginal.src = '';
+                    
+                    // Mostrar conteúdo adaptado
+                    painelAcessibilidade.style.display = '';
+                    header.style.display = '';
+                    navPrincipal.style.display = '';
+                    mainContent.style.display = '';
+                    footer.style.display = '';
+                    
+                    // Atualizar ícones
+                    iconAdaptado.classList.add('active');
+                    iconOriginal.classList.remove('active');
+                    
+                    anunciar('Versão acessível adaptada ativada');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

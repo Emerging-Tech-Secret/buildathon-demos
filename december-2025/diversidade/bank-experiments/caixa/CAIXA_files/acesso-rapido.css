@@ -1,0 +1,157 @@
+﻿.color-acesso-rapido {
+    display: block;
+    padding: 2rem 0;
+}
+
+.destaque-acesso {
+    margin: 0 4%;
+}
+
+.title-blue {
+    font-family: 'CAIXA Std Bold';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 42px;
+    line-height: 53.2px !important;
+    color: #005DA8 !important;
+    padding: 0 5%;
+}
+
+.slider-acesso {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-acesso {
+    box-shadow: 0px 3px 6px #00000029;
+    background: #F9FBFB 0% 0% no-repeat padding-box;
+    margin: 0 1% 0 1%;
+    border-radius: 10px;
+    border: 1px solid var(--cinza-200);
+    flex: 0 1 21%;
+    height: 230px;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-style: normal;
+    font-size: 18px;
+    text-align: center;
+    color: #005CA9;
+}
+
+    .btn-acesso:hover {
+        background-color: #005CA9;
+        color: #fff;
+    }
+
+    .btn-acesso a:link, .btn-acesso a:visited, .btn-acesso a:active {
+        color: #005CA9;
+        text-decoration: none;
+        font-family: 'CAIXA Std Book';
+    }
+
+    .btn-acesso:hover a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .btn-acesso i {
+        display: block;
+        margin: 20% 20% 12%;
+        font-size: 40px;
+    }
+
+@media only screen and (min-width: 800px) and (max-width: 1160px) {
+    .btn-acesso {
+        height: 170px;
+    }
+}
+
+@media screen and (max-width: 799px) {
+    .btn-acesso {
+        margin: 3%;
+    }
+
+    .slider-acesso {
+        display: grid;
+        grid-template-columns: 46% 46%;
+    }
+
+    .title-blue {
+        display: none !important;
+    }
+
+    .conteudo-acesso-rapido .title-blue {
+        display: block !important;
+        font-size: 5.5vw;
+        line-height: 12px !important;
+    }
+
+    .color-acesso-rapido {
+        padding: 1rem 0 !important;
+    }
+
+    .btn-acesso i {
+        margin: 20% !important;
+    }
+}
+
+@media only screen and (min-width: 1601px) {
+    .conteudo-acesso-rapido {
+        padding: 0 55px;
+    }
+
+    .btn-acesso i {
+        margin: 16% !important;
+    }
+}
+
+@media only screen and (min-width: 1420px) and (max-width: 1600px) {
+    .conteudo-acesso-rapido {
+        padding: 0 80px;
+    }
+}
+
+@media only screen and (min-width: 1381px) and (max-width: 1419px) {
+    .conteudo-acesso-rapido {
+        padding: 0 60px;
+    }
+}
+
+@media only screen and (min-width: 1310px) and (max-width: 1380px) {
+    .conteudo-acesso-rapido {
+        padding: 0 30px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .conteudo-acesso-rapido {
+        padding: 0 30px;
+    }
+
+    .btn-acesso {
+        height: 120px;
+    }
+
+        .btn-acesso i {
+            font-size: 25px;
+            margin: 15% 0 10% !important;
+        }
+
+        .btn-acesso a {
+            font-size: 14px;
+        }
+
+    #conteudo {
+        padding: 0 10px
+    }
+
+    .slider-acesso {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+}
+
+.ms-webpart-zone {
+    display: block !important;
+}
